@@ -7,4 +7,4 @@ Putting the QA/QC into BIM #
 https://player.ooyala.com/player/ipad/AwNzFvZzE6uF5o9_7GiHtT3sZ2Q1QWME.m3u8
 
 https://github.com/ArjanPeeters/BIM360-Field-Data-Extracter 
-Thanks to: arjan.peeters@gmail.com
+Thanks to: Arjan Peeters
