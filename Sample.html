@@ -1,0 +1,2303 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Model Checker Report</title>
+    <style type="text/css">
+        /*  Name-agnostic definitions.
+ *  These definitions are just a copy of the definitions further below given a generic name.
+ *  This allows publishers to make a reference to "the page's default font" without having to
+ *  update hundreds of custom pages/styles to match the new name.
+ */
+
+        @font-face{
+            font-family:'ADSK-Default';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-light.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementLight.svg#ArtifaktElementLight') format('svg');
+            font-style: normal;
+            font-weight: 300;
+        }
+
+        @font-face{
+            font-family:'ADSK-Default';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-regular.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementRegular.svg#ArtifaktElementRegular') format('svg');
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        @font-face{
+            font-family:'ADSK-Default';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-medium.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementMedium.svg#ArtifaktElementMedium') format('svg');
+            font-style: normal;
+            font-weight: 700;
+        }
+
+
+        /*  Generic "Artifakt" definitions.
+         *  An attempt will be made to map styles to appropriate font-faces when these are used.
+         *  See the definitions below if you wish to use a specific font.
+         */
+
+        @font-face{
+            font-family:'Artifakt';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-light.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementLight.svg#ArtifaktElementLight') format('svg');
+            font-style: normal;
+            font-weight: 300;
+        }
+
+        @font-face{
+            font-family:'Artifakt';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-regular.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementRegular.svg#ArtifaktElementRegular') format('svg');
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        @font-face{
+            font-family:'Artifakt';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-medium.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementMedium.svg#ArtifaktElementMedium') format('svg');
+            font-style: normal;
+            font-weight: 700;
+        }
+
+
+        /*  "Artifakt Legend" definitions.
+         *   These definitions are for the "Artifakt Legend" series of font faces.
+         */
+
+        @font-face{
+            font-family:'Artifakt Legend';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Light.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Light.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Light.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-legend-light.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktLegendLight.svg#ArtifaktLegendLight') format('svg');
+            font-weight: 300;
+        }
+
+        @font-face{
+            font-family:'Artifakt Legend';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Regular.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Regular.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Regular.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-legend-regular.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktLegendRegular.svg#ArtifaktLegendRegular') format('svg');
+            font-weight: 400;
+        }
+
+        @font-face{
+            font-family:'Artifakt Legend';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Medium.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Medium.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Medium.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-legend-medium.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktLegendMedium.svg#ArtifaktLegendMedium') format('svg');
+            font-weight: 700;
+        }
+
+
+        /*  "Artifakt Element" definitions.
+         *   These definitions are for the "Artifakt Element" series of font faces.
+         */
+
+        @font-face{
+            font-family:'Artifakt Element';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-light.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementLight.svg#ArtifaktElementLight') format('svg');
+            font-weight: 300;
+        }
+
+        @font-face{
+            font-family:'Artifakt Element';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-regular.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementRegular.svg#ArtifaktElementRegular') format('svg');
+            font-weight: 400;
+        }
+
+        @font-face{
+            font-family:'Artifakt Element';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-medium.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementMedium.svg#ArtifaktElementMedium') format('svg');
+            font-weight: 700;
+        }
+
+        @font-face{
+            font-family:'Artifakt Element';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Italic.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Italic.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Italic.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-italic.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementItalic.svg#ArtifaktElementItalic') format('svg');
+            font-style: italic;
+            font-weight: 400;
+        }
+    </style>
+    <style type="text/css">
+        body {
+            font: 100%/1.4 ADSK-Default, Verdana, Arial, Helvetica, sans-serif;
+            background: #f1f1f1;
+            margin: 0;
+            padding: 0;
+            color: #000;
+        }
+
+        h1, h2, h3, h4, h5, h6, p {
+            margin-top: 0; /* removing the top margin gets around an issue where margins can escape from their containing div. The remaining bottom margin will hold it away from any elements that follow. */
+            margin-bottom: 0;
+            padding-right: 0;
+            padding-left: 0; /* adding the padding to the sides of the elements within the divs, instead of the divs themselves, gets rid of any box model math. A nested div with side padding can also be used as an alternate method. */
+        }
+
+        h1, h3 {
+            color: white;
+        }
+
+        h1 {
+            font-family: "Artifakt Legend", Arial, sans-serif;
+            font-size: 1.5em;
+            margin: 0px;
+        }
+
+        a img { /* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
+            border: none;
+        }
+
+        /* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
+        a:link {
+            color: #414958;
+        }
+
+        a:visited {
+            color: #4E5869;
+        }
+
+        a:hover, a:active, a:focus { /* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
+            text-decoration: none;
+        }
+
+        /* ~~ this container surrounds all other divs giving them their percentage-based width ~~ */
+        .container {
+            width: 100%;
+            max-width: 1260px; /* a max-width may be desirable to keep this layout from getting too wide on a large monitor. This keeps line length more readable. IE6 does not respect this declaration. */
+            min-width: 780px; /* a min-width may be desirable to keep this layout from getting too narrow. This keeps line length more readable in the side columns. IE6 does not respect this declaration. */
+            background: #f1f1f1;
+            margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout. It is not needed if you set the .container's width to 100%. */
+        }
+
+        /* ~~the header is not given a width. It will extend the full width of your layout. It contains an image placeholder that should be replaced with your own linked logo~~ */
+        .header {
+            background-color: #3b4453;
+            border-bottom: 1px black;
+            padding: 15px;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .configContainer {
+            padding: 25px;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: row;
+            align-items: center;
+        }
+		
+		.imageContainer{
+		    width: 125px;
+			height: 125px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		
+		.checksetImage{
+		    max-width: 100%;
+			height: auto;
+		}
+
+        .resultData {
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .tabBar {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin: 0 25px;
+        }
+
+        .tabItem {
+            margin-right: 15px;
+            background: #f9f9f9;
+            font-family: "Artifakt Element", Arial, sans-serif;
+            padding: 15px;
+            color: #bb7a14;
+        }
+
+        .tabItem a, .tabItem a:visited {
+            text-decoration: none;
+            color: #bb7a14;
+        }
+
+        .tabItemActive {
+            margin-right: 15px;
+            padding: 15px;
+            background: white;
+            font-family: "Artifakt Element", Arial, sans-serif;
+            color: #bb7a14;
+        }
+
+        .tabItemActive a, .tabItemActive a:visited {
+            text-decoration: none;
+            color: #bb7a14;
+        }
+
+        .portalStandardText {
+            font-family: "Artifakt Element", Arial, sans-serif;
+            font-weight: lighter;
+        }
+
+        .portalHeadlineText {
+            font-family: "Artifakt Element", Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .portal {
+            background: white;
+            margin: 0 25px 25px 25px;
+            padding: 15px;
+        }
+
+        .treeElement {
+            margin-left: 25px;
+            margin-top: 15px;
+        }
+
+        .checkResult {
+            border: 1px black solid;
+            padding: 15px;
+            margin-top: 15px;
+            margin-left: 25px;
+            display: grid;
+            justify-content: flex-start;
+            grid-template-columns: auto 1fr;
+        }
+
+        .itemList {
+            width: 100%;
+        }
+
+        .itemList th {
+            font-family: "Artifakt Element", Arial, sans-serif;
+            font-weight: bold;
+            background: #f1f1f1;
+            padding: 0 10px;
+        }
+
+        .configData {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            grid-column-gap: 15px;
+            margin-left: 15px
+        }
+
+        .passRate{
+            font-family: "Artifakt Legend", Arial, sans-serif;
+            font-weight: bold;
+            font-size: 4.5em;
+        }
+        .structureHeading{
+            display: flex;
+        }
+
+        .structureBreakdown{
+            flex: auto;
+            flex-grow: 0;
+            white-space: nowrap;
+            margin-left: 15px;
+        }
+
+        .structureHeadingText{
+            flex-grow: 1;
+        }
+
+        .overallShown{
+            display: grid;
+            grid-template-rows: auto auto auto;
+            margin: 0 25px;
+        }
+        .overallHidden{
+            display: none;
+        }
+
+        .resultLow {
+            color: rgb(221, 34, 34);
+        }
+
+        .resultHigh {
+            color: rgb(135, 188, 64);
+        }
+
+        .resultMedium {
+            color: rgb(250, 162, 77);
+        }
+
+        .tableScroll{
+            overflow: auto;
+            max-height: 350px;
+            margin-top: 15px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="header">
+        <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_ModelChecker_24.png" width="24" height="24" style="margin-right: 15px" alt="Autodesk Model Checker for Revit"/>
+        <h1>Autodesk Model Checker for Revit</h1>
+    </div>
+    <div class="configContainer">
+        <div class="imageContainer">
+		    <img src="W:\Projects\181012 BestPractices\Art\BIM Lifecycle.png" class="checksetImage" 
+			onerror="this.src = 'http://www.biminteroperabilitytools.com/modelchecker/reports/HeroImage_ModelChecker.png';" 
+			alt="Checkset Image"/>
+		</div>
+        <div class="configData">
+            <span class="portalHeadlineText" style="margin-bottom: 15px">Title</span><span class="portalStandardText">Revit Best Practices</span>
+            <span class="portalHeadlineText" style="margin-bottom: 15px">Date</span><span class="portalStandardText">19 October 2018</span>
+            <span class="portalHeadlineText" style="margin-bottom: 15px">Author</span><span class="portalStandardText">Eddy Krygiel</span>
+            <span class="portalHeadlineText">Description</span><span
+                class="portalStandardText">Checks models against Revit Best Practices</span>
+        </div>
+    </div>
+    <div class="tabBar">
+        <div class="tabItemActive"><a href="BIM Projekt Golden Nugget - Architektur und Ingenieurbau_2019_ErwinMeulman.html">BIM Projekt Golden Nugget - Architektur und Ingenieurbau_2019_ErwinMeulman</a></div>
+    </div>
+    <div class="portal">
+        <div class="resultData">
+            <div class="overallShown">
+    <span class="passRate resultLow" style="text-align: center">50%</span>
+</div>
+<div style="display: grid; grid-template-columns: auto auto; grid-column-gap: 15px; margin-left: 15px">
+    <span class="portalHeadlineText" style="margin-bottom: 15px">Check Summary</span><span
+        class="portalStandardText">29 Checks, 2 <Span Foreground="#FFDD2222">(50%)</Span> Pass, 2 Fail, 20 Count/List, 4 Not Run, <Span Foreground="#FFDD2222">1 Errors</Span></span>
+    <span class="portalHeadlineText" style="margin-bottom: 15px">Report Date</span><span
+        class="portalStandardText">30 November 2018 - 13:38:03</span>
+    <span class="portalHeadlineText" style="margin-bottom: 15px">Revit Filepath</span><span
+        class="portalStandardText">C:\Users\PowerUser\Documents\BIM Projekt Golden Nugget - Architektur und Ingenieurbau_2019_ErwinMeulman.rvt</span>
+    <span class="portalHeadlineText">Checkset File</span><span
+        class="portalStandardText">C:\Users\PowerUser\Downloads\RevitBestPractices\RevitBestPractices\BestPractices.xml</span>
+</div>
+        </div>
+    </div>
+    <div class="portal" style="margin-top: 15px">
+        <div>
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">Model Best Practices</div>
+        <div class="structureBreakdown">29 Checks, 2 <Span style="color: #DD2222">(50%)</Span> Pass, 2 Fail, 20 Count/List, 4 Not Run, <Span style="color: #DD2222">1 Errors</Span></div>
+    </div>
+    <div class="portalStandardText"></div>
+    <div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">1 - General Information</div>
+        <div class="structureBreakdown">8 Checks, 0 <Span style="color: #DD2222">(0%)</Span> Pass, 1 Fail, 3 Count/List, 4 Not Run</div>
+    </div>
+    <div class="portalStandardText">General Information about the model</div>
+    <div class="checkResult">
+    <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_Report_Fail_26.png" alt="FAIL" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">1.1 Project File Name</div>
+        <div class="portalStandardText" style="text-align: left">Checks if the file name matches the defined standard.</div>
+        <div class="portalHeadlineText" style="margin - top: 15px">This file does not match the naming standard</div>
+        
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_Report_Report_26.png" alt="CUSTOM RESULT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">1.2 File Size</div>
+        <div class="portalStandardText" style="text-align: left">Reports the file size of a Revit model in MB (megabytes).</div>
+        
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Result: 122.13 MB</div>
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_Report_Report_26.png" alt="CUSTOM RESULT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">1.3 Revit Version</div>
+        <div class="portalStandardText" style="text-align: left">Will report the version and build data of Revit running the check.</div>
+        
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Result: Autodesk Revit 2019 20180806_1515(x64)</div>
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_Report_NotRun_26.png" alt="NOT RUN" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">1.4.1 All Elements Revit 2016</div>
+        <div class="portalStandardText" style="text-align: left">This will report the the number of elements in the model for Revit 2016. This check is version specific due to changes in Revit categories between version. Make sure to select the correct check.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_Report_NotRun_26.png" alt="NOT RUN" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">1.4.2 All Elements Revit 2017</div>
+        <div class="portalStandardText" style="text-align: left">This will report the the number of elements in the model for Revit 2017. This check is version specific due to changes in Revit categories between version. Make sure to select the correct check.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_Report_NotRun_26.png" alt="NOT RUN" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">1.4.3 All Elements Revit 2018</div>
+        <div class="portalStandardText" style="text-align: left">This will report the the number of elements in the model for Revit 2018. This check is version specific due to changes in Revit categories between version. Make sure to select the correct check.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_Report_NotRun_26.png" alt="NOT RUN" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">1.4.4 All Elements Revit 2019</div>
+        <div class="portalStandardText" style="text-align: left">This will report the the number of elements in the model for Revit 2019. This check is version specific due to changes in Revit categories between version. Make sure to select the correct check.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_Report_Report_26.png" alt="CUSTOM RESULT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">1.5 Shared Parameters File</div>
+        <div class="portalStandardText" style="text-align: left">Will report the path of the current shared parameters file.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div>
+</div><div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">2 - Model Basics</div>
+        <div class="structureBreakdown">4 Checks, 4 Count/List</div>
+    </div>
+    <div class="portalStandardText">Setting model location and links</div>
+    <div class="checkResult">
+    <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">2.1 Project Coordinates</div>
+        <div class="portalStandardText" style="text-align: left">Will report the coordinates of the survey and project base points, elevation, and true north.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 5</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th><th>Value</th></tr>
+<tr><td>Project Base Point Coordinate</td><td>0,000 m E/W  |  0,000 m N/S</td></tr>
+<tr><td>Project Base Point Elevation</td><td>500,000 m</td></tr>
+<tr><td>Project Base Point Rotation</td><td>45,50°</td></tr>
+<tr><td>Survey Point Coordinate</td><td>0,000 m E/W  |  0,000 m N/S</td></tr>
+<tr><td>Survey Point Elevation</td><td>0,000 m</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">2.2 Project Information</div>
+        <div class="portalStandardText" style="text-align: left">Lists all parameters and values attached to Project Information for a project except those associated with Revit Extensions (starting with 'Extensions').</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 39</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th><th>Value</th></tr>
+<tr><td>Author</td><td>PE</td></tr>
+<tr><td>Bauherr</td><td>GOLDEN NUGGET</td></tr>
+<tr><td>Baustellenort</td><td>8010 Graz</td></tr>
+<tr><td>Baustellenstraße</td><td>Grazbachgasse 65a</td></tr>
+<tr><td>Building Name</td><td>Golden Nugget</td></tr>
+<tr><td>Category</td><td></td></tr>
+<tr><td>Category</td><td></td></tr>
+<tr><td>Client Name</td><td>INNOCAD ARCHITEKTUR ZT GMBH</td></tr>
+<tr><td>Design Option</td><td></td></tr>
+<tr><td>Document GUID</td><td>1de588e5-246e-4cd3-bb3a-2debef7f8645</td></tr>
+<tr><td>Edited by</td><td></td></tr>
+<tr><td>Einlagezahl</td><td>123-45</td></tr>
+<tr><td>Family Name</td><td></td></tr>
+<tr><td>FM Standort</td><td>Grazbachgasse 65a, 8010 Graz
+Grazbachgasse 65a, 8010 Graz</td></tr>
+<tr><td>Gerichtsbezirk</td><td>Graz</td></tr>
+<tr><td>Grundstücksnummer</td><td></td></tr>
+<tr><td>Katastralgemeinde</td><td></td></tr>
+<tr><td>Kundenadresse</td><td>Grazbachgasse 65a</td></tr>
+<tr><td>Kundenort</td><td>8010 Graz</td></tr>
+<tr><td>Kundentelefon</td><td>+49 89 547690</td></tr>
+<tr><td>Kundenzusatz</td><td>project development</td></tr>
+<tr><td>Organization Description</td><td></td></tr>
+<tr><td>Organization Name</td><td>AUTODESK GmbH</td></tr>
+<tr><td>PrintManagerSettings</td><td><PrintManagerDS xmlns="http://tempuri.org/PrintManagerDS.xsd">
+  <xs:schema id="PrintManagerDS" targetNamespace="http://tempuri.org/PrintManagerDS.xsd" xmlns:mstns="http://tempuri.org/PrintManagerDS.xsd" xmlns="http://tempuri.org/PrintManagerDS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+    <xs:element name="PrintManagerDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="DruckEinstellungDT">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" type="xs:string" minOccurs="0" />
+                <xs:element name="Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Beschreibung" type="xs:string" minOccurs="0" />
+                <xs:element name="Kategorie" type="xs:string" minOccurs="0" />
+                <xs:element name="PrinterName" type="xs:string" minOccurs="0" />
+                <xs:element name="PrintToFile" type="xs:boolean" minOccurs="0" />
+                <xs:element name="FileName" type="xs:string" minOccurs="0" />
+                <xs:element name="ColorDepth" type="xs:string" minOccurs="0" />
+                <xs:element name="HiddenLineViews" type="xs:string" minOccurs="0" />
+                <xs:element name="HideCropBoundaries" type="xs:boolean" minOccurs="0" />
+                <xs:element name="HideRefOrWorkPlanes" type="xs:boolean" minOccurs="0" />
+                <xs:element name="HideScopeBoxes" type="xs:boolean" minOccurs="0" />
+                <xs:element name="HideUnreferencedViewTags" type="xs:boolean" minOccurs="0" />
+                <xs:element name="MarginType" type="xs:string" minOccurs="0" />
+                <xs:element name="PageOrientation" type="xs:string" minOccurs="0" />
+                <xs:element name="PaperPlacement" type="xs:string" minOccurs="0" />
+                <xs:element name="PaperSize" type="xs:string" minOccurs="0" />
+                <xs:element name="PaperSource" type="xs:string" minOccurs="0" />
+                <xs:element name="RasterQuality" type="xs:string" minOccurs="0" />
+                <xs:element name="ReplaceHalftoneWithThinLines" type="xs:boolean" minOccurs="0" />
+                <xs:element name="UserDefinedMarginX" type="xs:double" minOccurs="0" />
+                <xs:element name="UserDefinedMarginY" type="xs:double" minOccurs="0" />
+                <xs:element name="ViewLinksInBlue" type="xs:boolean" minOccurs="0" />
+                <xs:element name="Zoom" type="xs:int" minOccurs="0" />
+                <xs:element name="ZoomType" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="DruckSatzDT">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="PlanID" type="xs:string" minOccurs="0" />
+                <xs:element name="DruckEinstellungID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Beschreibung" type="xs:string" minOccurs="0" />
+                <xs:element name="ParameterName" type="xs:string" minOccurs="0" />
+                <xs:element name="File" type="xs:string" minOccurs="0" />
+                <xs:element name="Path" type="xs:string" minOccurs="0" />
+                <xs:element name="GenerateFileName" type="xs:boolean" minOccurs="0" />
+                <xs:element name="Kategorie" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="DruckJobDT">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="DruckJobGruppeID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="DruckSatzID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Anzahl" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="DruckJobGruppeDT">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Beschreibung" type="xs:string" minOccurs="0" />
+                <xs:element name="JobCount" msdata:ReadOnly="true" msdata:Expression="Count(Child(DruckJobGruppeDT_DruckJobDT).Anzahl)" type="xs:int" minOccurs="0" />
+                <xs:element name="Kategorie" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="PrintSettingCategories">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="CategoryName" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="PrintRecordCategories">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="CategoryName" type="xs:string" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="JobGroupCategories">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="CategoryName" type="xs:string" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="ExportSettingsDT">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" />
+                <xs:element name="Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Description" type="xs:string" default="&quot;&quot;" minOccurs="0" />
+                <xs:element name="Category" type="xs:string" minOccurs="0" />
+                <xs:element name="Type" type="xs:string" minOccurs="0" />
+                <xs:element name="Data" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="ExportMappingDT">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" />
+                <xs:element name="DWG" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="DWGPath" type="xs:string" minOccurs="0" />
+                <xs:element name="DWGFile" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="ExportSettingCategories">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="CategoryName" type="xs:string" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1">
+        <xs:selector xpath=".//mstns:DruckEinstellungDT" />
+        <xs:field xpath="mstns:ID" />
+      </xs:unique>
+      <xs:unique name="Constraint2">
+        <xs:selector xpath=".//mstns:DruckEinstellungDT" />
+        <xs:field xpath="mstns:Name" />
+      </xs:unique>
+      <xs:unique name="DruckSatzDT_Constraint1" msdata:ConstraintName="Constraint1">
+        <xs:selector xpath=".//mstns:DruckSatzDT" />
+        <xs:field xpath="mstns:ID" />
+      </xs:unique>
+      <xs:unique name="DruckJobDT_Constraint1" msdata:ConstraintName="Constraint1">
+        <xs:selector xpath=".//mstns:DruckJobDT" />
+        <xs:field xpath="mstns:ID" />
+      </xs:unique>
+      <xs:unique name="DruckJobGruppeDT_Constraint1" msdata:ConstraintName="Constraint1">
+        <xs:selector xpath=".//mstns:DruckJobGruppeDT" />
+        <xs:field xpath="mstns:ID" />
+      </xs:unique>
+      <xs:unique name="PrintSettingCategories_Constraint1" msdata:ConstraintName="Constraint1">
+        <xs:selector xpath=".//mstns:PrintSettingCategories" />
+        <xs:field xpath="mstns:CategoryName" />
+      </xs:unique>
+      <xs:unique name="PrintRecordCategories_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//mstns:PrintRecordCategories" />
+        <xs:field xpath="mstns:CategoryName" />
+      </xs:unique>
+      <xs:unique name="JobGroupCategories_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//mstns:JobGroupCategories" />
+        <xs:field xpath="mstns:CategoryName" />
+      </xs:unique>
+      <xs:unique name="ExportSettingsDT_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//mstns:ExportSettingsDT" />
+        <xs:field xpath="mstns:ID" />
+      </xs:unique>
+      <xs:unique name="ExportSettingsDT_Constraint2" msdata:ConstraintName="Constraint2">
+        <xs:selector xpath=".//mstns:ExportSettingsDT" />
+        <xs:field xpath="mstns:Name" />
+      </xs:unique>
+      <xs:unique name="ExportMappingDT_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//mstns:ExportMappingDT" />
+        <xs:field xpath="mstns:ID" />
+      </xs:unique>
+      <xs:unique name="ExportSettingCategories_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//mstns:ExportSettingCategories" />
+        <xs:field xpath="mstns:CategoryName" />
+      </xs:unique>
+    </xs:element>
+    <xs:annotation>
+      <xs:appinfo>
+        <msdata:Relationship name="PrintSettingCategories_DruckEinstellungDT" msdata:parent="PrintSettingCategories" msdata:child="DruckEinstellungDT" msdata:parentkey="CategoryName" msdata:childkey="Kategorie" />
+        <msdata:Relationship name="DruckEinstellungDT_DruckSatzDT" msdata:parent="DruckEinstellungDT" msdata:child="DruckSatzDT" msdata:parentkey="ID" msdata:childkey="DruckEinstellungID" />
+        <msdata:Relationship name="DruckJobGruppeDT_DruckJobDT" msdata:parent="DruckJobGruppeDT" msdata:child="DruckJobDT" msdata:parentkey="ID" msdata:childkey="DruckJobGruppeID" />
+        <msdata:Relationship name="DruckEinstellungDT_PrintRecordCategories" msdata:parent="DruckSatzDT" msdata:child="PrintRecordCategories" msdata:parentkey="Kategorie" msdata:childkey="CategoryName" />
+        <msdata:Relationship name="DruckJobGruppeDT_JobGroupCategories" msdata:parent="DruckJobGruppeDT" msdata:child="JobGroupCategories" msdata:parentkey="Kategorie" msdata:childkey="CategoryName" />
+        <msdata:Relationship name="DruckSatzDT_DruckJobDT" msdata:parent="DruckSatzDT" msdata:child="DruckJobDT" msdata:parentkey="ID" msdata:childkey="DruckSatzID" />
+        <msdata:Relationship name="DruckSatzDT_ExportMappingDT" msdata:parent="DruckSatzDT" msdata:child="ExportMappingDT" msdata:parentkey="ID" msdata:childkey="ID" />
+        <msdata:Relationship name="ExportSettingsDT_ExportSettingCategories" msdata:parent="ExportSettingCategories" msdata:child="ExportSettingsDT" msdata:parentkey="CategoryName" msdata:childkey="Category" />
+      </xs:appinfo>
+    </xs:annotation>
+  </xs:schema>
+  <PrintRecordCategories>
+    <CategoryName>&lt;Keine&gt;</CategoryName>
+  </PrintRecordCategories>
+  <JobGroupCategories>
+    <CategoryName>&lt;Keine&gt;</CategoryName>
+  </JobGroupCategories>
+</PrintManagerDS></td></tr>
+<tr><td>Project Address</td><td>Grazbachgasse 65a
+8010 Graz</td></tr>
+<tr><td>Project Issue Date</td><td>04-03-2018</td></tr>
+<tr><td>Project Name</td><td>GOLDEN NUGGET</td></tr>
+<tr><td>Project Number</td><td>2018-03</td></tr>
+<tr><td>Project Status</td><td>Zur Freigabe</td></tr>
+<tr><td>SR Document GUID</td><td>fa58a9a6-7ae1-402f-a3c0-84bf802ae115</td></tr>
+<tr><td>Type Name</td><td></td></tr>
+<tr><td>Verfasser eMail</td><td></td></tr>
+<tr><td>Verfasser Firma 1</td><td>AUTODESK</td></tr>
+<tr><td>Verfasser PLZ Ort</td><td>81379 München</td></tr>
+<tr><td>Verfasser Strasse</td><td>Aidenbachstraße 56</td></tr>
+<tr><td>Verfasser Telefon</td><td>+49 89 547690</td></tr>
+<tr><td>Verfasser URL</td><td>www.Autodesk.de/BIM</td></tr>
+<tr><td>Verfasser URL 2</td><td>www.Autodesk.de/RevitForum</td></tr>
+<tr><td>Workset</td><td>4</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">2.3 Revit Links</div>
+        <div class="portalStandardText" style="text-align: left">Checks for any linked Revit models </div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 1</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>RVT Links : BIM Projekt Golden Nugget - Gebaeudetechnik.rvt</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">2.4 Linked CAD</div>
+        <div class="portalStandardText" style="text-align: left">Will report a list of linked CAD files in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div>
+</div><div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">3 - Model Composition</div>
+        <div class="structureBreakdown">8 Checks, 1 <Span style="color: #DD2222">(50%)</Span> Pass, 1 Fail, 5 Count/List, <Span style="color: #DD2222">1 Errors</Span></div>
+    </div>
+    <div class="portalStandardText">Review of contents</div>
+    <div class="checkResult">
+    <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">3.1 Imported CAD files</div>
+        <div class="portalStandardText" style="text-align: left">List all CAD files that were Imported and not Linked.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">3.2 Imported SKP files</div>
+        <div class="portalStandardText" style="text-align: left">Will report the number of imported SKP files.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">3.3 Raster Images</div>
+        <div class="portalStandardText" style="text-align: left">Lists all raster images in a Revit model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 40</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Raster Images : 3D Ausschnitt Deckblatt</td></tr>
+<tr><td>Raster Images : 3D_Deckblatt</td></tr>
+<tr><td>Raster Images : 3D_Stahl Liftturm Ausschnitt_1</td></tr>
+<tr><td>Raster Images : 3D_Stahl Liftturm Gesamt_1</td></tr>
+<tr><td>Raster Images : 3D_Verkaufspläne</td></tr>
+<tr><td>Raster Images : CNC.jpg</td></tr>
+<tr><td>Raster Images : Detail Logo 02 klein</td></tr>
+<tr><td>Raster Images : Dynamo Skripte laden.jpg</td></tr>
+<tr><td>Raster Images : Fassade_01</td></tr>
+<tr><td>Raster Images : Fassade_02</td></tr>
+<tr><td>Raster Images : Fassade_03</td></tr>
+<tr><td>Raster Images : Fassade_04</td></tr>
+<tr><td>Raster Images : Fassade_05</td></tr>
+<tr><td>Raster Images : Fassade_06</td></tr>
+<tr><td>Raster Images : Fassade_07 Deckblatt</td></tr>
+<tr><td>Raster Images : Fassade_07 Deckblatt</td></tr>
+<tr><td>Raster Images : Fassade_07_Deckblatt</td></tr>
+<tr><td>Raster Images : Fassade_07a</td></tr>
+<tr><td>Raster Images : Fertig.png (2)</td></tr>
+<tr><td>Raster Images : Golden Nugget Nordansicht_Photomontage.png (2)</td></tr>
+<tr><td>Raster Images : Golden Nugget_BIM_Architektur und Ingenieuerbau - 3D-Ansicht - Berechnungsergebnisse_G1_Fx - Kopie.png (2)</td></tr>
+<tr><td>Raster Images : Golden Nugget_BIM_Architektur und Ingenieuerbau - 3D-Ansicht - Berechnungsergebnisse_G1_Myy - Kopie.png (2)</td></tr>
+<tr><td>Raster Images : Golden Nugget_BIM_Architektur und Ingenieuerbau - 3D-Ansicht - Berechnungsergebnisse_G1_Verformungen.png (2)</td></tr>
+<tr><td>Raster Images : HG Büro OG 1_1</td></tr>
+<tr><td>Raster Images : HG Gang OG 1_1</td></tr>
+<tr><td>Raster Images : HG Küche EG_1</td></tr>
+<tr><td>Raster Images : Kamera_GN Büro EG_Von Durchgang zu HG_1</td></tr>
+<tr><td>Raster Images : Kamera_GN Nordansicht_1</td></tr>
+<tr><td>Raster Images : Logo Detail_1</td></tr>
+<tr><td>Raster Images : Logo_Detail_02 klein</td></tr>
+<tr><td>Raster Images : Rückseite_01 klein</td></tr>
+<tr><td>Raster Images : Rückseite_01 klein</td></tr>
+<tr><td>Raster Images : Rückseite_02 Deckblatt</td></tr>
+<tr><td>Raster Images : Rückseite_02 Deckblatt</td></tr>
+<tr><td>Raster Images : Rückseite_02 Deckblatt</td></tr>
+<tr><td>Raster Images : Rückseite_03 klein</td></tr>
+<tr><td>Raster Images : Rückseite_03 klein</td></tr>
+<tr><td>Raster Images : Screen 1.PNG</td></tr>
+<tr><td>Raster Images : Screen 2.PNG</td></tr>
+<tr><td>Raster Images : Screen 3.PNG</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">3.4 Generic Models (Report List)</div>
+        <div class="portalStandardText" style="text-align: left">Total number and list of generic model families in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 119</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Generic Models : Abzug Deckenöffnung Lüftungsdurchführung HG EG : Abzug Deckenöffnung Lüftungsdurchführung HG EG</td></tr>
+<tr><td>Generic Models : Abzugskörper_Rechteckig 2 Ebenen : Abzugskörper_Rechteckig 2 Ebenen</td></tr>
+<tr><td>Generic Models : Abzugskörper_Rechteckig 2 Ebenen : Abzugskörper_Rechteckig 2 Ebenen</td></tr>
+<tr><td>Generic Models : Abzugskörper_Rechteckig 2 Ebenen : Abzugskörper_Rechteckig 2 Ebenen</td></tr>
+<tr><td>Generic Models : Abzugskörper_Rechteckig 2 Ebenen : Abzugskörper_Rechteckig 2 Ebenen</td></tr>
+<tr><td>Generic Models : Abzugskörper_Rechteckig 2 Ebenen : Abzugskörper_Rechteckig 2 Ebenen</td></tr>
+<tr><td>Generic Models : Abzugskörper_Rechteckig 2 Ebenen : Abzugskörper_Rechteckig 2 Ebenen</td></tr>
+<tr><td>Generic Models : Abzugskörper_Rechteckig 2 Ebenen : Abzugskörper_Rechteckig 2 Ebenen</td></tr>
+<tr><td>Generic Models : Abzugskörper_Rechteckig 2 Ebenen : Abzugskörper_Rechteckig 2 Ebenen</td></tr>
+<tr><td>Generic Models : Abzugskörper_Rechteckig 2 Ebenen : Abzugskörper_Rechteckig 2 Ebenen</td></tr>
+<tr><td>Generic Models : Abzugskörper_Rechteckig 2 Ebenen : Abzugskörper_Rechteckig 2 Ebenen</td></tr>
+<tr><td>Generic Models : Abzugskörper_Rechteckig 2 Ebenen : Abzugskörper_Rechteckig 2 Ebenen</td></tr>
+<tr><td>Generic Models : Abzugskörper_Rechteckig 2 Ebenen : Abzugskörper_Rechteckig 2 Ebenen</td></tr>
+<tr><td>Generic Models : Abzugskörper_Rechteckig 2 Ebenen : Abzugskörper_Rechteckig 2 Ebenen</td></tr>
+<tr><td>Generic Models : Abzugskörper_Rechteckig 2 Ebenen : Abzugskörper_Rechteckig 2 Ebenen</td></tr>
+<tr><td>Generic Models : Abzugskörper_Rechteckig 2 Ebenen : Abzugskörper_Rechteckig 2 Ebenen</td></tr>
+<tr><td>Generic Models : Abzugskörper_Rechteckig 2 Ebenen : Abzugskörper_Rechteckig 2 Ebenen</td></tr>
+<tr><td>Generic Models : Abzugskörper_Rechteckig 2 Ebenen : Abzugskörper_Rechteckig 2 Ebenen</td></tr>
+<tr><td>Generic Models : Abzugskörper_Rechteckig 2 Ebenen : Abzugskörper_Rechteckig 2 Ebenen</td></tr>
+<tr><td>Generic Models : Abzugskörper_Rechteckig 2 Ebenen : Abzugskörper_Rechteckig 2 Ebenen</td></tr>
+<tr><td>Generic Models : Abzugskörper_Rechteckig 2 Ebenen : Abzugskörper_Rechteckig 2 Ebenen</td></tr>
+<tr><td>Generic Models : Abzugskörper_Rechteckig 2 Ebenen : Abzugskörper_Rechteckig 2 Ebenen</td></tr>
+<tr><td>Generic Models : Abzugskörper_Rechteckig 2 Ebenen_mit Neigung : Abzugskörper_Rechteckig 2 Ebenen_mit Neigung</td></tr>
+<tr><td>Generic Models : Abzugskörper_Rechteckig 2 Ebenen_mit Neigung : Abzugskörper_Rechteckig 2 Ebenen_mit Neigung</td></tr>
+<tr><td>Generic Models : Abzugskörper_Rechteckig 2 Ebenen_mit Neigung : Abzugskörper_Rechteckig 2 Ebenen_mit Neigung</td></tr>
+<tr><td>Generic Models : Aufzug : Liftschacht</td></tr>
+<tr><td>Generic Models : Autodesk_Logo_Golden Nugget : Autodesk_Logo_Golden Nugget</td></tr>
+<tr><td>Generic Models : Deckenöffnung elliptisch (2D) : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung elliptisch (2D) : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung elliptisch (2D) : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung elliptisch (2D) : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung elliptisch (2D) : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung elliptisch (2D) : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung elliptisch (2D) : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung elliptisch (2D) : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung elliptisch (2D) : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung elliptisch (2D) : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung elliptisch (2D) : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung elliptisch (2D) : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung elliptisch (2D) : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung elliptisch (2D) : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung elliptisch (2D) : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung elliptisch : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung elliptisch : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung elliptisch : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung elliptisch : DS</td></tr>
+<tr><td>Generic Models : Deckenöffnung elliptisch : DS</td></tr>
+<tr><td>Generic Models : Deckenöffnung elliptisch : DS</td></tr>
+<tr><td>Generic Models : Deckenöffnung elliptisch : DS</td></tr>
+<tr><td>Generic Models : Deckenöffnung elliptisch : DS</td></tr>
+<tr><td>Generic Models : Deckenöffnung elliptisch : DS</td></tr>
+<tr><td>Generic Models : Deckenöffnung elliptisch : DS</td></tr>
+<tr><td>Generic Models : Deckenöffnung elliptisch : DS</td></tr>
+<tr><td>Generic Models : Deckenöffnung elliptisch : DS</td></tr>
+<tr><td>Generic Models : Deckenöffnung elliptisch : DS</td></tr>
+<tr><td>Generic Models : Deckenöffnung elliptisch : DS</td></tr>
+<tr><td>Generic Models : Deckenöffnung rechteckig (2D) : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung rechteckig (2D) : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung rechteckig (2D) : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung rechteckig (2D) : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung rechteckig (2D) : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung rechteckig (2D) : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung rechteckig (2D) : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung rechteckig (2D) : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung rechteckig (2D) : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung rechteckig (2D) : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung rechteckig (2D) : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung rechteckig : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung rechteckig : DD</td></tr>
+<tr><td>Generic Models : Deckenöffnung rechteckig : DD</td></tr>
+<tr><td>Generic Models : Gitterrost 4eckig adaptiv : Gitterrost 30 mm</td></tr>
+<tr><td>Generic Models : Gitterrost 4eckig adaptiv : Gitterrost 30 mm</td></tr>
+<tr><td>Generic Models : Gitterrost 4eckig adaptiv : Gitterrost 30 mm</td></tr>
+<tr><td>Generic Models : Golden Nugget_Dachabschluss OG 5 West : Golden Nugget_Dachabschluss OG 5 West</td></tr>
+<tr><td>Generic Models : Golden Nugget_Dachzuschnitt : Golden Nugget_Dachzuschnitt</td></tr>
+<tr><td>Generic Models : Häuser Umgebung1 : Häuser Umgebung</td></tr>
+<tr><td>Generic Models : Häuser Umgebung2 : Häuser GN Nachbargebäude Ost</td></tr>
+<tr><td>Generic Models : Häuser Umgebung3 : Häuser GN Nachbargebäude West</td></tr>
+<tr><td>Generic Models : hsbcad Void Scarf Joint : Default</td></tr>
+<tr><td>Generic Models : hsbcad Void Scarf Joint : Default</td></tr>
+<tr><td>Generic Models : hsbcad Void Scarf Joint : Default</td></tr>
+<tr><td>Generic Models : hsbcad Void Scarf Joint : Default</td></tr>
+<tr><td>Generic Models : hsbcad Void Scarf Joint : Default</td></tr>
+<tr><td>Generic Models : hsbcad Void Scarf Joint : Default</td></tr>
+<tr><td>Generic Models : hsbcad Void Scarf Joint : Default</td></tr>
+<tr><td>Generic Models : hsbcad Void Scarf Joint : Default</td></tr>
+<tr><td>Generic Models : INNOCAD</td></tr>
+<tr><td>Generic Models : Kamin einzügig : 30 x 30 d=16</td></tr>
+<tr><td>Generic Models : Kamin einzügig : 30 x 30 d=16</td></tr>
+<tr><td>Generic Models : Kniestock Abzugskörper Dachkante : Kniestock Abzugskörper Dachkante</td></tr>
+<tr><td>Generic Models : marker : marker</td></tr>
+<tr><td>Generic Models : marker : marker</td></tr>
+<tr><td>Generic Models : marker : marker</td></tr>
+<tr><td>Generic Models : marker : marker</td></tr>
+<tr><td>Generic Models : marker : marker</td></tr>
+<tr><td>Generic Models : marker : marker</td></tr>
+<tr><td>Generic Models : marker : marker</td></tr>
+<tr><td>Generic Models : marker : marker</td></tr>
+<tr><td>Generic Models : marker : marker</td></tr>
+<tr><td>Generic Models : marker : marker</td></tr>
+<tr><td>Generic Models : marker : marker</td></tr>
+<tr><td>Generic Models : marker : marker</td></tr>
+<tr><td>Generic Models : marker : marker</td></tr>
+<tr><td>Generic Models : marker : marker</td></tr>
+<tr><td>Generic Models : marker : marker</td></tr>
+<tr><td>Generic Models : marker : marker</td></tr>
+<tr><td>Generic Models : marker : marker</td></tr>
+<tr><td>Generic Models : marker : marker</td></tr>
+<tr><td>Generic Models : marker : marker</td></tr>
+<tr><td>Generic Models : marker : marker</td></tr>
+<tr><td>Generic Models : marker : marker</td></tr>
+<tr><td>Generic Models : marker : marker</td></tr>
+<tr><td>Generic Models : marker : marker</td></tr>
+<tr><td>Generic Models : marker : marker</td></tr>
+<tr><td>Generic Models : marker : marker</td></tr>
+<tr><td>Generic Models : marker : marker</td></tr>
+<tr><td>Generic Models : Schacht : DN 1000</td></tr>
+<tr><td>Generic Models : Wandöffnung rechteckig : WS</td></tr>
+<tr><td>Generic Models : Wandöffnung rechteckig : WS</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">3.5 Design Options</div>
+        <div class="portalStandardText" style="text-align: left">Lists all Design Options in a Revit model.  Also optionally lists the number of instances in each design option.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_Report_Fail_26.png" alt="FAIL" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">3.6 In-Place Families (Element Check)</div>
+        <div class="portalStandardText" style="text-align: left">Checks for in-place families in the model.</div>
+        <div class="portalHeadlineText" style="margin - top: 15px">There are in-place families in the model.</div>
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 25</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Category</th><th>Family</th><th>Type</th><th>Name</th><th>ID</th></tr>
+<tr><td>Casework</td><td>APP 1A_Küche</td><td>APP 1A_Küche</td><td>Casework : APP 1A_Küche : APP 1A_Küche</td><td>1342324</td></tr>
+<tr><td>Casework</td><td>APP 1B_Küche</td><td>APP 1B_Küche</td><td>Casework : APP 1B_Küche : APP 1B_Küche</td><td>1337943</td></tr>
+<tr><td>Casework</td><td>APP 2A_Küche</td><td>APP 1A_Küche</td><td>Casework : APP 2A_Küche : APP 1A_Küche</td><td>1358190</td></tr>
+<tr><td>Casework</td><td>APP 2B_Küche</td><td>APP 2B_Küche</td><td>Casework : APP 2B_Küche : APP 2B_Küche</td><td>1357438</td></tr>
+<tr><td>Casework</td><td>APP 3A_Küche</td><td>APP 3A_Küche</td><td>Casework : APP 3A_Küche : APP 3A_Küche</td><td>1368687</td></tr>
+<tr><td>Casework</td><td>APP 3B_Küche</td><td>APP 3B_Küche</td><td>Casework : APP 3B_Küche : APP 3B_Küche</td><td>1363566</td></tr>
+<tr><td>Casework</td><td>APP 4-Küche OG 5</td><td>APP 4-Küche OG 5</td><td>Casework : APP 4-Küche OG 5 : APP 4-Küche OG 5</td><td>1382095</td></tr>
+<tr><td>Casework</td><td>UG Besprechung Betonabdeckung</td><td>UG Besprechung Betonabdeckung</td><td>Casework : UG Besprechung Betonabdeckung : UG Besprechung Betonabdeckung</td><td>2355849</td></tr>
+<tr><td>Generic Models</td><td>Abzug Deckenöffnung Lüftungsdurchführung HG EG</td><td>Abzug Deckenöffnung Lüftungsdurchführung HG EG</td><td>Generic Models : Abzug Deckenöffnung Lüftungsdurchführung HG EG : Abzug Deckenöffnung Lüftungsdurchführung HG EG</td><td>2128802</td></tr>
+<tr><td>Generic Models</td><td>Golden Nugget_Dachabschluss OG 5 West</td><td>Golden Nugget_Dachabschluss OG 5 West</td><td>Generic Models : Golden Nugget_Dachabschluss OG 5 West : Golden Nugget_Dachabschluss OG 5 West</td><td>1220704</td></tr>
+<tr><td>Generic Models</td><td>Golden Nugget_Dachzuschnitt</td><td>Golden Nugget_Dachzuschnitt</td><td>Generic Models : Golden Nugget_Dachzuschnitt : Golden Nugget_Dachzuschnitt</td><td>1219115</td></tr>
+<tr><td>Generic Models</td><td>Häuser Umgebung1</td><td>Häuser Umgebung</td><td>Generic Models : Häuser Umgebung1 : Häuser Umgebung</td><td>2704419</td></tr>
+<tr><td>Generic Models</td><td>Häuser Umgebung2</td><td>Häuser GN Nachbargebäude Ost</td><td>Generic Models : Häuser Umgebung2 : Häuser GN Nachbargebäude Ost</td><td>3437291</td></tr>
+<tr><td>Generic Models</td><td>Häuser Umgebung3</td><td>Häuser GN Nachbargebäude West</td><td>Generic Models : Häuser Umgebung3 : Häuser GN Nachbargebäude West</td><td>3440395</td></tr>
+<tr><td>Generic Models</td><td>Kniestock Abzugskörper Dachkante</td><td>Kniestock Abzugskörper Dachkante</td><td>Generic Models : Kniestock Abzugskörper Dachkante : Kniestock Abzugskörper Dachkante</td><td>3521716</td></tr>
+<tr><td>Mass</td><td>Garage</td><td>Garage</td><td>Mass : Garage : Garage</td><td>2219974</td></tr>
+<tr><td>Mass</td><td>Golden Nugget</td><td>Golden Nugget</td><td>Mass : Golden Nugget : Golden Nugget</td><td>2218713</td></tr>
+<tr><td>Mass</td><td>Golden Nugget Erschließung</td><td>Golden Nugget Erschließung</td><td>Mass : Golden Nugget Erschließung : Golden Nugget Erschließung</td><td>2226615</td></tr>
+<tr><td>Mass</td><td>Hofgebäude</td><td>Hofgebäude</td><td>Mass : Hofgebäude : Hofgebäude</td><td>2219685</td></tr>
+<tr><td>Mass</td><td>Technik</td><td>Technik</td><td>Mass : Technik : Technik</td><td>2223165</td></tr>
+<tr><td>Plumbing Fixtures</td><td>APP 1B_Dusche</td><td>APP 1B_Dusche</td><td>Plumbing Fixtures : APP 1B_Dusche : APP 1B_Dusche</td><td>1342224</td></tr>
+<tr><td>Plumbing Fixtures</td><td>APP 1B_Dusche1</td><td>APP 1B_Dusche</td><td>Plumbing Fixtures : APP 1B_Dusche1 : APP 1B_Dusche</td><td>1358038</td></tr>
+<tr><td>Plumbing Fixtures</td><td>APP 3A_Dusche</td><td>APP 3A_Dusche</td><td>Plumbing Fixtures : APP 3A_Dusche : APP 3A_Dusche</td><td>1368251</td></tr>
+<tr><td>Plumbing Fixtures</td><td>APP 4_Duschtasse</td><td>APP 4_Duschtasse</td><td>Plumbing Fixtures : APP 4_Duschtasse : APP 4_Duschtasse</td><td>1371672</td></tr>
+<tr><td>Windows</td><td>FE - Aufsatzelement Kniestock</td><td>Aufsatz Kniestock</td><td>Windows : FE - Aufsatzelement Kniestock : Aufsatz Kniestock</td><td>1407060</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_Report_Pass_26.png" alt="PASS" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">3.7 Rooms or Spaces with No Defined Area</div>
+        <div class="portalStandardText" style="text-align: left">Checks for Rooms or MEP Spaces that are "not placed", "not enclosed", or "redundant" in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_Error_26.png" alt="ERROR" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">3.8 Families</div>
+        <div class="portalStandardText" style="text-align: left">Will report the families in the project ordered by file size.</div>
+        
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Result: 146,020 KB</div>
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th><th>Value</th></tr>
+<tr><td>Ablagemöbel auf Rollen</td><td>556 KB</td></tr>
+<tr><td>Abzugskörper_Rechteckig 2 Ebenen</td><td>440 KB</td></tr>
+<tr><td>Abzugskörper_Rechteckig 2 Ebenen_mit Neigung</td><td>440 KB</td></tr>
+<tr><td>Anschluss mit Dämmung HIT-BX</td><td>820 KB</td></tr>
+<tr><td>Ansichtsmarkierung Pfeil</td><td>392 KB</td></tr>
+<tr><td>Ansichtsmarkierung Quadrat</td><td>424 KB</td></tr>
+<tr><td>A-Pad</td><td>596 KB</td></tr>
+<tr><td>Auflager</td><td>448 KB</td></tr>
+<tr><td>Auflager - benutzerdefiniert</td><td>620 KB</td></tr>
+<tr><td>Aufzug</td><td>488 KB</td></tr>
+<tr><td>Autodesk_Logo_Golden Nugget</td><td>888 KB</td></tr>
+<tr><td>Badewanne (1)</td><td>484 KB</td></tr>
+<tr><td>Bank_01</td><td>432 KB</td></tr>
+<tr><td>Befestigung - Handlauf</td><td>432 KB</td></tr>
+<tr><td>Beschriftung Aussparung</td><td>396 KB</td></tr>
+<tr><td>Beschriftung Decke</td><td>388 KB</td></tr>
+<tr><td>Beschriftung Detail</td><td>380 KB</td></tr>
+<tr><td>Beschriftung Ebene</td><td>388 KB</td></tr>
+<tr><td>Beschriftung Ebene Unterkante</td><td>384 KB</td></tr>
+<tr><td>Beschriftung Fenster Architekturlichte</td><td>384 KB</td></tr>
+<tr><td>Beschriftung Fundamente</td><td>392 KB</td></tr>
+<tr><td>Beschriftung Geschossdecke</td><td>400 KB</td></tr>
+<tr><td>Beschriftung Körper</td><td>384 KB</td></tr>
+<tr><td>Beschriftung Körpergeschoss</td><td>384 KB</td></tr>
+<tr><td>Beschriftung Leuchte - Hersteller & Modell</td><td>388 KB</td></tr>
+<tr><td>Beschriftung Material</td><td>384 KB</td></tr>
+<tr><td>Beschriftung Material linksbündig</td><td>384 KB</td></tr>
+<tr><td>Beschriftung Plan</td><td>380 KB</td></tr>
+<tr><td>Beschriftung Raster</td><td>388 KB</td></tr>
+<tr><td>Beschriftung Raum Ausführung</td><td>392 KB</td></tr>
+<tr><td>Beschriftung Raum_Behörde</td><td>388 KB</td></tr>
+<tr><td>Beschriftung Raumfläche</td><td>388 KB</td></tr>
+<tr><td>Beschriftung Schnitt</td><td>396 KB</td></tr>
+<tr><td>Beschriftung Spannrichtung</td><td>432 KB</td></tr>
+<tr><td>Beschriftung Träger</td><td>392 KB</td></tr>
+<tr><td>Beschriftung Tragwerksstütze</td><td>392 KB</td></tr>
+<tr><td>Beschriftung Tragwerksverbindungen</td><td>392 KB</td></tr>
+<tr><td>Beschriftung Treppe Steigungsverhältnis</td><td>384 KB</td></tr>
+<tr><td>Beschriftung Türen - Anschlagseite</td><td>388 KB</td></tr>
+<tr><td>Beschriftung Türen einfach</td><td>392 KB</td></tr>
+<tr><td>Beschriftung Wand</td><td>388 KB</td></tr>
+<tr><td>Betondachstein Standard</td><td>424 KB</td></tr>
+<tr><td>Bier</td><td>504 KB</td></tr>
+<tr><td>BIM_Beschriftung</td><td>2,364 KB</td></tr>
+<tr><td>Bitumenbahn</td><td>392 KB</td></tr>
+<tr><td>Block auf Klemmbrett</td><td>584 KB</td></tr>
+<tr><td>Bogen - allgemein</td><td>452 KB</td></tr>
+<tr><td>Boxspringbett_02</td><td>1,268 KB</td></tr>
+<tr><td>Breifkastenanlage_1er</td><td>596 KB</td></tr>
+<tr><td>Bruchlinie einseitig</td><td>404 KB</td></tr>
+<tr><td>Bruchlinie zweiseitig</td><td>404 KB</td></tr>
+<tr><td>Buegel Geschlossen</td><td>396 KB</td></tr>
+<tr><td>Büro-Dreh-Stuhl</td><td>664 KB</td></tr>
+<tr><td>Büromöbel EG Nord</td><td>476 KB</td></tr>
+<tr><td>Büromöbel EG Nord_Empfangspult</td><td>480 KB</td></tr>
+<tr><td>BuzziSpace - BuzziBalance</td><td>792 KB</td></tr>
+<tr><td>BuzziSpace - BuzziPleat Edel Ceiling suspended 107</td><td>700 KB</td></tr>
+<tr><td>BuzziSpace - BuzziPleat Edel Ceiling suspended 150</td><td>708 KB</td></tr>
+<tr><td>BuzziSpace - BuzziPleat Ripple Ceiling suspended 100</td><td>764 KB</td></tr>
+<tr><td>Dachrinne - rund</td><td>388 KB</td></tr>
+<tr><td>Deckenöffnung elliptisch</td><td>1,072 KB</td></tr>
+<tr><td>Deckenöffnung elliptisch (2D)</td><td>1,044 KB</td></tr>
+<tr><td>Deckenöffnung rechteckig</td><td>812 KB</td></tr>
+<tr><td>Deckenöffnung rechteckig (2D)</td><td>736 KB</td></tr>
+<tr><td>Drehstuhl_01</td><td>544 KB</td></tr>
+<tr><td>Drehstuhl_01_mit Armlehne</td><td>576 KB</td></tr>
+<tr><td>Dübelleistenelemente-HDB</td><td>592 KB</td></tr>
+<tr><td>Duschwanne 01</td><td>544 KB</td></tr>
+<tr><td>Duschwanne 02</td><td>532 KB</td></tr>
+<tr><td>Einbaumöbel Hofgebäude EG West</td><td>496 KB</td></tr>
+<tr><td>Einbauwaschbecken - Rund (2)</td><td>700 KB</td></tr>
+<tr><td>E-Parkplatz_2</td><td>532 KB</td></tr>
+<tr><td>Fadenvorhang</td><td>500 KB</td></tr>
+<tr><td>Fahrrad_03</td><td>772 KB</td></tr>
+<tr><td>Fahrradständer_01</td><td>512 KB</td></tr>
+<tr><td>FE - Bestand Hofgebäude</td><td>556 KB</td></tr>
+<tr><td>FE - Dachfenster</td><td>748 KB</td></tr>
+<tr><td>FE 1 tlg - Fix im Rahmen</td><td>1,320 KB</td></tr>
+<tr><td>FE 2 tlg - DrehKipp mit Stulp</td><td>1,372 KB</td></tr>
+<tr><td>FE TUER 1 tlg - Fix im Rahmen</td><td>1,276 KB</td></tr>
+<tr><td>FE TUER 2 tlg - DrehKipp mit Stulp</td><td>1,340 KB</td></tr>
+<tr><td>FE TUER 2 tlg - SchiebeKipp</td><td>1,808 KB</td></tr>
+<tr><td>Feuerlöscher</td><td>504 KB</td></tr>
+<tr><td>Firstziegel</td><td>416 KB</td></tr>
+<tr><td>FLACHEN10058 Träger</td><td>468 KB</td></tr>
+<tr><td>Fundament</td><td>460 KB</td></tr>
+<tr><td>Geländer - rechteckig</td><td>388 KB</td></tr>
+<tr><td>Geländerpfosten - rechteckig</td><td>436 KB</td></tr>
+<tr><td>Geländerpfosten - rund</td><td>432 KB</td></tr>
+<tr><td>Gerader Stab</td><td>388 KB</td></tr>
+<tr><td>Geschirrspüler Einbau</td><td>432 KB</td></tr>
+<tr><td>Gitterrost 4eckig adaptiv</td><td>544 KB</td></tr>
+<tr><td>Handlauf - rund</td><td>384 KB</td></tr>
+<tr><td>HEB Stützen</td><td>484 KB</td></tr>
+<tr><td>HEB Träger</td><td>508 KB</td></tr>
+<tr><td>Holzkiste als Ablage</td><td>484 KB</td></tr>
+<tr><td>hsbcad Balken</td><td>472 KB</td></tr>
+<tr><td>hsbcad Basic BoxCut</td><td>1,468 KB</td></tr>
+<tr><td>hsbcad Handler Beam Cut</td><td>440 KB</td></tr>
+<tr><td>hsbcad Handler Dovetail</td><td>512 KB</td></tr>
+<tr><td>hsbcad Handler Multiple Cut</td><td>488 KB</td></tr>
+<tr><td>hsbcad Handler Scarf Joint</td><td>580 KB</td></tr>
+<tr><td>hsbcad Handler Simple Shoulder</td><td>512 KB</td></tr>
+<tr><td>hsbcad Handler StretchToBeam</td><td>440 KB</td></tr>
+<tr><td>hsbcad Handler Tenon</td><td>444 KB</td></tr>
+<tr><td>hsbcad Stützen</td><td>416 KB</td></tr>
+<tr><td>hsbcad Void Double Cut Female</td><td>1,176 KB</td></tr>
+<tr><td>hsbcad Void Double Cut Male</td><td>1,568 KB</td></tr>
+<tr><td>hsbcad Void Dovetail Female</td><td>2,184 KB</td></tr>
+<tr><td>hsbcad Void Dovetail Male</td><td>2,040 KB</td></tr>
+<tr><td>hsbcad Void Mortise Female</td><td>4,460 KB</td></tr>
+<tr><td>hsbcad Void Mortise Male</td><td>2,376 KB</td></tr>
+<tr><td>hsbcad Void Scarf Joint</td><td>932 KB</td></tr>
+<tr><td>Kaffeemachine</td><td>468 KB</td></tr>
+<tr><td>Kaffee-Tisch</td><td>452 KB</td></tr>
+<tr><td>Kamin einzügig</td><td>520 KB</td></tr>
+<tr><td>Kerzenständer-01</td><td>460 KB</td></tr>
+<tr><td>Keyboard</td><td>856 KB</td></tr>
+<tr><td>Knie Hauptdach</td><td>412 KB</td></tr>
+<tr><td>Knie Nebendach</td><td>416 KB</td></tr>
+<tr><td>Kochplatte - 2 Platten</td><td>456 KB</td></tr>
+<tr><td>Kühlschrank hoch1</td><td>444 KB</td></tr>
+<tr><td>Lamellenelement</td><td>472 KB</td></tr>
+<tr><td>Lande - Trigon Book Storage</td><td>444 KB</td></tr>
+<tr><td>Lande - Trigon Desk 182</td><td>968 KB</td></tr>
+<tr><td>Lande - Trigon Desk 182 mit Shelf</td><td>1,040 KB</td></tr>
+<tr><td>Lande - Trigon Desk 240</td><td>964 KB</td></tr>
+<tr><td>Lande - Trigon Desk Simple 182</td><td>680 KB</td></tr>
+<tr><td>Lande - Trigon Desk Simple 182 Wall-Shelf</td><td>736 KB</td></tr>
+<tr><td>Lande - Trigon Pedding Slim Desk 240</td><td>960 KB</td></tr>
+<tr><td>Lande - Trigon Rhomb Desk 120</td><td>944 KB</td></tr>
+<tr><td>Lande - Trigon Slim Desk 120</td><td>716 KB</td></tr>
+<tr><td>Lande - Trigon Slim Desk 80</td><td>720 KB</td></tr>
+<tr><td>Lande - Trigon Storage</td><td>460 KB</td></tr>
+<tr><td>Leeres Element</td><td>400 KB</td></tr>
+<tr><td>marker</td><td>456 KB</td></tr>
+<tr><td>Mercedes Benz SLK</td><td>1,784 KB</td></tr>
+<tr><td>Mikrowelle_01</td><td>572 KB</td></tr>
+<tr><td>Monitor_01</td><td>492 KB</td></tr>
+<tr><td>Mülleimer_01</td><td>472 KB</td></tr>
+<tr><td>Nordpfeil L</td><td>400 KB</td></tr>
+<tr><td>Ordner</td><td>440 KB</td></tr>
+<tr><td>Ortbeton - Stütze - rechteckig</td><td>416 KB</td></tr>
+<tr><td>Ortbeton - Stütze - rund</td><td>436 KB</td></tr>
+<tr><td>Parkplatz_90 Grad</td><td>472 KB</td></tr>
+<tr><td>Plankopf Ausführung</td><td>584 KB</td></tr>
+<tr><td>Plankopf Genehmigung</td><td>540 KB</td></tr>
+<tr><td>Plankopf mit Schriftfeld</td><td>532 KB</td></tr>
+<tr><td>Plankopf_Deckblatt</td><td>548 KB</td></tr>
+<tr><td>Plankopf_Verkaufsplan</td><td>548 KB</td></tr>
+<tr><td>Profil_Maschendraht Haupttreppenhaus</td><td>416 KB</td></tr>
+<tr><td>Profil_Podestgeländer Oben</td><td>404 KB</td></tr>
+<tr><td>Profil_Windladen</td><td>416 KB</td></tr>
+<tr><td>QRO-Stütze (EN 10219-2)</td><td>448 KB</td></tr>
+<tr><td>Radio_01</td><td>528 KB</td></tr>
+<tr><td>Regal einfach</td><td>440 KB</td></tr>
+<tr><td>Regal offen</td><td>524 KB</td></tr>
+<tr><td>RO-Stütze (EN 10210-2)</td><td>436 KB</td></tr>
+<tr><td>Schacht</td><td>1,860 KB</td></tr>
+<tr><td>Schreibtischablage Büro OG</td><td>464 KB</td></tr>
+<tr><td>Schreibtischablage Podest OG</td><td>472 KB</td></tr>
+<tr><td>SHS-Stütze (EN 10210-2)</td><td>456 KB</td></tr>
+<tr><td>Sideboard_01</td><td>484 KB</td></tr>
+<tr><td>Sitzmöbel_06</td><td>484 KB</td></tr>
+<tr><td>SOFiSTiK_Beschriftung_Auszug_Stabstahl</td><td>396 KB</td></tr>
+<tr><td>SOFiSTiK_Beschriftung_Matten</td><td>392 KB</td></tr>
+<tr><td>SOFiSTiK_Beschriftung_Stabstahl</td><td>404 KB</td></tr>
+<tr><td>SOFiSTiK_Beschriftung_Symbol_Matten</td><td>400 KB</td></tr>
+<tr><td>SOFiSTiK_Detail_RebarSet</td><td>940 KB</td></tr>
+<tr><td>SOFiSTiK_Detail_RebarShape_21</td><td>972 KB</td></tr>
+<tr><td>SOFiSTiK_Detail_RebarShape_26</td><td>1,104 KB</td></tr>
+<tr><td>SOFiSTiK_Detail_RebarShape_31x</td><td>1,184 KB</td></tr>
+<tr><td>SOFiSTiK_Detail_RebarShape_77</td><td>1,028 KB</td></tr>
+<tr><td>SOFiSTiK_Detail_Verlegung_Stabstahl</td><td>940 KB</td></tr>
+<tr><td>Spüle - Insel</td><td>484 KB</td></tr>
+<tr><td>Stab 3 Schenkel</td><td>392 KB</td></tr>
+<tr><td>Stab Einfach Gekroepft</td><td>392 KB</td></tr>
+<tr><td>Stahlseil</td><td>392 KB</td></tr>
+<tr><td>Stuhl_16_Breite_432</td><td>488 KB</td></tr>
+<tr><td>Stuhl_23_Breite_781</td><td>540 KB</td></tr>
+<tr><td>Symbol Höhenkote_Grundriss</td><td>408 KB</td></tr>
+<tr><td>Symbol Höhenkote_Schnitt</td><td>388 KB</td></tr>
+<tr><td>Tasse und Untertasse</td><td>532 KB</td></tr>
+<tr><td>Tisch-Einbein-Rund</td><td>428 KB</td></tr>
+<tr><td>Tisch-rechteckig</td><td>452 KB</td></tr>
+<tr><td>Tischset</td><td>1,120 KB</td></tr>
+<tr><td>Top 1B_Sitzbank</td><td>468 KB</td></tr>
+<tr><td>TU DF 1 - Fluchttüre Endausgang</td><td>1,476 KB</td></tr>
+<tr><td>TU DF 1 - Maschendraht-Endausgang Treppenhaus</td><td>560 KB</td></tr>
+<tr><td>TU DF 1 - Pfostenstock flächenbündig</td><td>964 KB</td></tr>
+<tr><td>TU DF 1 - Rahmenstock flächenbündig</td><td>968 KB</td></tr>
+<tr><td>TU DF 1 - Umfassungszarge Falztüre</td><td>980 KB</td></tr>
+<tr><td>TU DF 1 - Wohnungseingang</td><td>1,120 KB</td></tr>
+<tr><td>TU Fassade 1-flg - Drehflügel</td><td>536 KB</td></tr>
+<tr><td>TU Fassade DF 1 - mit Kipp-Oberlichte</td><td>660 KB</td></tr>
+<tr><td>TU Gartentor 01</td><td>612 KB</td></tr>
+<tr><td>TU SF 1 - Hofgebäude Südfassade</td><td>544 KB</td></tr>
+<tr><td>TU SF 1 - Schiebetüre Aufgesetzt</td><td>904 KB</td></tr>
+<tr><td>TU SF 2 - Lift Zentral</td><td>636 KB</td></tr>
+<tr><td>TU SF 2 - Schiebetüre Aufgesetzt</td><td>904 KB</td></tr>
+<tr><td>TV</td><td>492 KB</td></tr>
+<tr><td>TV-Tisch</td><td>524 KB</td></tr>
+<tr><td>Urinal_01</td><td>688 KB</td></tr>
+<tr><td>Viteo - Lounge Chair</td><td>484 KB</td></tr>
+<tr><td>Viteo - Lounger</td><td>472 KB</td></tr>
+<tr><td>Viteo - Side Table</td><td>488 KB</td></tr>
+<tr><td>Voice Service</td><td>1,344 KB</td></tr>
+<tr><td>Vorhanglamelle</td><td>476 KB</td></tr>
+<tr><td>VW Käfer 1963</td><td>996 KB</td></tr>
+<tr><td>Wandheizkörper_01</td><td>544 KB</td></tr>
+<tr><td>Wandöffnung rechteckig</td><td>852 KB</td></tr>
+<tr><td>Wandschrank mit Fülltüre</td><td>736 KB</td></tr>
+<tr><td>Waschbecken - Freistehend</td><td>732 KB</td></tr>
+<tr><td>Waschbecken - Recteckig Rund</td><td>588 KB</td></tr>
+<tr><td>Waschmaschine</td><td>480 KB</td></tr>
+<tr><td>WC mit Spülkasten - Wandbasiert (2)</td><td>568 KB</td></tr>
+<tr><td>WC mit Spülkasten (2)</td><td>488 KB</td></tr>
+<tr><td>Wendel</td><td>400 KB</td></tr>
+<tr><td>Wever & Ducré - Rock Collection 370 x 300 Floor</td><td>536 KB</td></tr>
+<tr><td>Wever & Ducré - Rock Collection 560 x 300 Suspended</td><td>540 KB</td></tr>
+<tr><td>Wever & Ducré - Rock Collection-Rock Table 2</td><td>496 KB</td></tr>
+<tr><td>XAL - HEX-O Absorber</td><td>504 KB</td></tr>
+<tr><td>XAL - HEX-O Acoustic Modul</td><td>456 KB</td></tr>
+<tr><td>XAL - HEX-O-Ceiling Lighting</td><td>548 KB</td></tr>
+</table>
+</div>
+        <div class="portalHeadlineText" style="margin-top: 15px">Error</div><div class="portalStandardText" style="margin-top: 15px">Error getting file size from family 'Laufpfeil Rampe/ Treppe': The model could not be saved:  (COleException 0x80030002)</div>
+    </div>
+</div>
+</div><div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">4 - View Composition</div>
+        <div class="structureBreakdown">5 Checks, 5 Count/List</div>
+    </div>
+    <div class="portalStandardText"></div>
+    <div class="checkResult">
+    <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">4.1 Number of Views</div>
+        <div class="portalStandardText" style="text-align: left">Lists Number of Views and View Names.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 382</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Views : @CAD_FFOK</td></tr>
+<tr><td>Views : @CAD_mittel_100</td></tr>
+<tr><td>Views : 02a_Grundriss Vorentwurf</td></tr>
+<tr><td>Views : 02-Deckenpläne</td></tr>
+<tr><td>Views : 04_Gebäudetechnik-Unterlage</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : 3D-Ansicht</td></tr>
+<tr><td>Views : Ansicht</td></tr>
+<tr><td>Views : Ansicht</td></tr>
+<tr><td>Views : Ansicht</td></tr>
+<tr><td>Views : Ansicht Einreichung Mittel 1-100</td></tr>
+<tr><td>Views : Ansicht Konstruktion Fein 1-50</td></tr>
+<tr><td>Views : AP_Kanal</td></tr>
+<tr><td>Views : Berechnungsmodell Subsystem</td></tr>
+<tr><td>Views : Bewehrung 3D</td></tr>
+<tr><td>Views : Deckenplan</td></tr>
+<tr><td>Views : Deckenplan</td></tr>
+<tr><td>Views : Deckenplan</td></tr>
+<tr><td>Views : Deckenplan</td></tr>
+<tr><td>Views : Deckenplan</td></tr>
+<tr><td>Views : Detail</td></tr>
+<tr><td>Views : Detail Name</td></tr>
+<tr><td>Views : Detail Name</td></tr>
+<tr><td>Views : Detail Name</td></tr>
+<tr><td>Views : Detail Name</td></tr>
+<tr><td>Views : Detail Name</td></tr>
+<tr><td>Views : Detail Name</td></tr>
+<tr><td>Views : Detail Name</td></tr>
+<tr><td>Views : Detail Name</td></tr>
+<tr><td>Views : Detail Name</td></tr>
+<tr><td>Views : Details</td></tr>
+<tr><td>Views : EP - Ansicht 100 - Mittel</td></tr>
+<tr><td>Views : EP - GR Phasen Behoerde</td></tr>
+<tr><td>Views : EP - GR Phasen Material</td></tr>
+<tr><td>Views : EP - Kanalplanung</td></tr>
+<tr><td>Views : EP - Lageplan</td></tr>
+<tr><td>Views : EP - Schnitt 100-fein-verd. Linien</td></tr>
+<tr><td>Views : EP - Schnitt Kanal</td></tr>
+<tr><td>Views : Fundamente</td></tr>
+<tr><td>Views : G_Körpermodell</td></tr>
+<tr><td>Views : GN_Büro EG</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss</td></tr>
+<tr><td>Views : Grundriss Einreichung Mittel 1-100</td></tr>
+<tr><td>Views : Grundriss Einreichung_Phasen</td></tr>
+<tr><td>Views : Grundriss Konstruktion Fein 1-50</td></tr>
+<tr><td>Views : Grundriss_Ebenen 1-50</td></tr>
+<tr><td>Views : HG Innen</td></tr>
+<tr><td>Views : Lageplan 1-250</td></tr>
+<tr><td>Views : Lageplan 1-500</td></tr>
+<tr><td>Views : Legende</td></tr>
+<tr><td>Views : Legende</td></tr>
+<tr><td>Views : Legende</td></tr>
+<tr><td>Views : Legende</td></tr>
+<tr><td>Views : Phasen - Bestand</td></tr>
+<tr><td>Views : Phasen - Bestand, Abbruch</td></tr>
+<tr><td>Views : Phasen - Bestand, Neu</td></tr>
+<tr><td>Views : Räume nach Name</td></tr>
+<tr><td>Views : Räume nach Nutzungsart</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : Rendern</td></tr>
+<tr><td>Views : S_Körpermodell</td></tr>
+<tr><td>Views : Schnitt Holzbau</td></tr>
+<tr><td>Views : Schnitt Holzbau</td></tr>
+<tr><td>Views : Schnitt Holzbau</td></tr>
+<tr><td>Views : Schnitt Holzbau</td></tr>
+<tr><td>Views : Schnitt Holzbau 1-10</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitt Name</td></tr>
+<tr><td>Views : Schnitte für Behörde</td></tr>
+<tr><td>Views : Standard Deckenplan</td></tr>
+<tr><td>Views : Tragende Bauteile</td></tr>
+<tr><td>Views : Tragwerksplan</td></tr>
+<tr><td>Views : Tragwerksplan</td></tr>
+<tr><td>Views : Tragwerksplan</td></tr>
+<tr><td>Views : Tragwerksplan</td></tr>
+<tr><td>Views : Tragwerksplan</td></tr>
+<tr><td>Views : Tragwerksplan</td></tr>
+<tr><td>Views : Tragwerksplan</td></tr>
+<tr><td>Views : Tragwerksplan</td></tr>
+<tr><td>Views : Tragwerksplan</td></tr>
+<tr><td>Views : Tragwerksplan</td></tr>
+<tr><td>Views : Tragwerksplan</td></tr>
+<tr><td>Views : Tragwerksplan</td></tr>
+<tr><td>Views : Tragwerksplan</td></tr>
+<tr><td>Views : Tragwerksplan</td></tr>
+<tr><td>Views : Tragwerksplan</td></tr>
+<tr><td>Views : TW_Bewehrung</td></tr>
+<tr><td>Views : TW_Bewehrung 3D</td></tr>
+<tr><td>Views : TW_Bewehrung_Schnitt</td></tr>
+<tr><td>Views : TW_Position</td></tr>
+<tr><td>Views : TW_Schalplan Fundament</td></tr>
+<tr><td>Views : TW_Schalung</td></tr>
+<tr><td>Views : TW_Schalung_Schnitt</td></tr>
+<tr><td>Views : TW_Stahlbau_Schnitt</td></tr>
+<tr><td>Views : VP - Verkaufsplan GR</td></tr>
+<tr><td>Views : WP - GR 1-50</td></tr>
+<tr><td>Views : WP - Schnitt 1-50</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">4.2 Views Not on Sheets</div>
+        <div class="portalStandardText" style="text-align: left">Reports the number of views (not including views that can be placed on more than one sheet, like Schedules and Legends) that are not placed on a sheet.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 195</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>3D View - {3D - ErwinMeulman}</td></tr>
+<tr><td>3D View - {3D}</td></tr>
+<tr><td>3D View - 3D Ausschnitt Steigstränge</td></tr>
+<tr><td>3D View - 3D Treppenhaus</td></tr>
+<tr><td>3D View - 3D_Ausschnitt Deckblatt</td></tr>
+<tr><td>3D View - 3D_Berechnungsmodell</td></tr>
+<tr><td>3D View - 3D_Berechnungsmodell Kopie 1</td></tr>
+<tr><td>3D View - 3D_Berechnungsmodell ohen Lasten</td></tr>
+<tr><td>3D View - 3D_BIM veredelt Design</td></tr>
+<tr><td>3D View - 3D_Dachstuhl</td></tr>
+<tr><td>3D View - 3D_Dynamo Tischlein Deck Dich</td></tr>
+<tr><td>3D View - 3D_Gebäudetechnik</td></tr>
+<tr><td>3D View - 3D_Gebäudetechnik Überblendet</td></tr>
+<tr><td>3D View - 3D_Gebäudetechnik Überblendet Ausschnitt</td></tr>
+<tr><td>3D View - 3D_Golden Nugget_Architektur_Isoliert</td></tr>
+<tr><td>3D View - 3D_Golden Nugget_Architektur_Isoliert CFD</td></tr>
+<tr><td>3D View - 3D_Golden Nugget_Architektur_Körpermodell Isoliert</td></tr>
+<tr><td>3D View - 3D_Golden Nugget_Bewehrung und Stahlbau_Isoliert</td></tr>
+<tr><td>3D View - 3D_Golden Nugget_Büro EG isoliert</td></tr>
+<tr><td>3D View - 3D_Golden Nugget_Einreichung 01</td></tr>
+<tr><td>3D View - 3D_Golden Nugget_Einreichung Schnitte</td></tr>
+<tr><td>3D View - 3D_Golden Nugget_Umgebung Isoliert</td></tr>
+<tr><td>3D View - 3D_Hofgebäude_Dachstuhl</td></tr>
+<tr><td>3D View - 3D_Hofgebäude_Dachstuhl isoliert</td></tr>
+<tr><td>3D View - 3D_Ohne Goldfassade</td></tr>
+<tr><td>3D View - 3D_Stahl BuehneGesamt</td></tr>
+<tr><td>3D View - 3D_Stahl Liftturm Ausschnitt Kopie 1</td></tr>
+<tr><td>3D View - 3D_Stahl Liftturm Detail Kopie 1</td></tr>
+<tr><td>3D View - 3D_Tragwerk</td></tr>
+<tr><td>3D View - 3D_Tragwerk Bewehrung</td></tr>
+<tr><td>3D View - 3D_Verkaufspläne</td></tr>
+<tr><td>3D View - Berechnungsergebnisse_G1_Fx</td></tr>
+<tr><td>3D View - Berechnungsergebnisse_G1_Myy</td></tr>
+<tr><td>3D View - Berechnungsergebnisse_G1_Verformungen</td></tr>
+<tr><td>3D View - Bewehrung Dü1OG</td></tr>
+<tr><td>3D View - Bewehrung Dü1OG Kopie 1</td></tr>
+<tr><td>3D View - Bewehrung S2.1</td></tr>
+<tr><td>3D View - Detail Logo 01</td></tr>
+<tr><td>3D View - Detail Logo 02</td></tr>
+<tr><td>3D View - Fassade_01</td></tr>
+<tr><td>3D View - Fassade_02</td></tr>
+<tr><td>3D View - ISO Schnitt EG Fassade</td></tr>
+<tr><td>3D View - ISO Schnitt Kniestock</td></tr>
+<tr><td>3D View - Kamera_3D_BIM veredelt Design</td></tr>
+<tr><td>3D View - Kamera_GN Büro EG_Von Durchgang zu HG FBX</td></tr>
+<tr><td>3D View - Kamera_GN Büro EG_Von Eingangstüre</td></tr>
+<tr><td>3D View - Kamera_GN Büro EG_Von Nordostseite</td></tr>
+<tr><td>3D View - Kamera_GN GO1 Büro</td></tr>
+<tr><td>3D View - Kamera_GN Nordansicht</td></tr>
+<tr><td>3D View - Kamera_HG Besprechung EG</td></tr>
+<tr><td>3D View - Kamera_HG Büro EG</td></tr>
+<tr><td>3D View - Kamera_HG Büro OG 1</td></tr>
+<tr><td>3D View - Kamera_HG Büro OG 1_2</td></tr>
+<tr><td>3D View - Kamera_HG Gang OG 1</td></tr>
+<tr><td>3D View - Kamera_HG Küche EG</td></tr>
+<tr><td>3D View - Kamera_Nordseite Dynamo Fassadenfarbe ändern</td></tr>
+<tr><td>3D View - Rückseite 04</td></tr>
+<tr><td>3D View - Rückseite_01</td></tr>
+<tr><td>3D View - Rückseite_02</td></tr>
+<tr><td>3D View - Subsystem Dü0EG</td></tr>
+<tr><td>3D View - Subsystem Dü1OG</td></tr>
+<tr><td>3D View - Subsystem Dü2OG</td></tr>
+<tr><td>3D View - Subsystem Dü3OG</td></tr>
+<tr><td>3D View - Subsystem Dü4OG</td></tr>
+<tr><td>3D View - Subsystem Dü5OG</td></tr>
+<tr><td>Ceiling Plan - Berechnung DüEG</td></tr>
+<tr><td>Ceiling Plan - Bewehrung DüUG</td></tr>
+<tr><td>Ceiling Plan - GN_OG 3_UK RD_Deckenplan</td></tr>
+<tr><td>Ceiling Plan - GN_OG 4_UK RD_Deckenplan</td></tr>
+<tr><td>Ceiling Plan - Schalung DüEG</td></tr>
+<tr><td>Ceiling Plan - Schalung DüOG2</td></tr>
+<tr><td>Ceiling Plan - Schalung DüOG3</td></tr>
+<tr><td>Ceiling Plan - Schalung DüOG4</td></tr>
+<tr><td>Ceiling Plan - Schalung DüUG</td></tr>
+<tr><td>Detail - Stützenansicht EG</td></tr>
+<tr><td>Detail - Stützenansicht gesamt</td></tr>
+<tr><td>Detail - Stützengrundriss EG</td></tr>
+<tr><td>Engineering Plan - Schalung Fundamentplatte</td></tr>
+<tr><td>Floor Plan - Draufsicht Holzbau First</td></tr>
+<tr><td>Floor Plan - Draufsicht Holzbau Mauerbank</td></tr>
+<tr><td>Floor Plan - EG</td></tr>
+<tr><td>Floor Plan - GN_EG_Bodenplatte_OK</td></tr>
+<tr><td>Floor Plan - GN_EG_FBOK Räume</td></tr>
+<tr><td>Floor Plan - GN_EG_MEP Unterlage</td></tr>
+<tr><td>Floor Plan - GN_EG_Treppenhaus_FBOK Räume</td></tr>
+<tr><td>Floor Plan - GN_EG_Treppenhaus_OK FFB</td></tr>
+<tr><td>Floor Plan - GN_OG 1_FBOK Räume</td></tr>
+<tr><td>Floor Plan - GN_OG 1_MEP Unterlage</td></tr>
+<tr><td>Floor Plan - GN_OG 1_OK RFB</td></tr>
+<tr><td>Floor Plan - GN_OG 1_Treppenhaus_FBOK Räume</td></tr>
+<tr><td>Floor Plan - GN_OG 1_Treppenhaus_OK FFB</td></tr>
+<tr><td>Floor Plan - GN_OG 2_Dynamo Tischlein Deck Dich</td></tr>
+<tr><td>Floor Plan - GN_OG 2_FBOK Räume</td></tr>
+<tr><td>Floor Plan - GN_OG 2_MEP Unterlage</td></tr>
+<tr><td>Floor Plan - GN_OG 2_OK RFB</td></tr>
+<tr><td>Floor Plan - GN_OG 2_Treppenhaus_FBOK Räume</td></tr>
+<tr><td>Floor Plan - GN_OG 2_Treppenhaus_OK FFB</td></tr>
+<tr><td>Floor Plan - GN_OG 3_FBOK Räume</td></tr>
+<tr><td>Floor Plan - GN_OG 3_MEP Unterlage</td></tr>
+<tr><td>Floor Plan - GN_OG 3_OK RFB</td></tr>
+<tr><td>Floor Plan - GN_OG 3_Treppenhaus_FBOK Räume</td></tr>
+<tr><td>Floor Plan - GN_OG 3_Treppenhaus_OK FFB</td></tr>
+<tr><td>Floor Plan - GN_OG 4_Autodesk Logo</td></tr>
+<tr><td>Floor Plan - GN_OG 4_Dynamo Anschlagseite Türen</td></tr>
+<tr><td>Floor Plan - GN_OG 4_FBOK Räume</td></tr>
+<tr><td>Floor Plan - GN_OG 4_Lift_ Schachtkopf OK</td></tr>
+<tr><td>Floor Plan - GN_OG 4_MEP Unterlage</td></tr>
+<tr><td>Floor Plan - GN_OG 4_OK RFB</td></tr>
+<tr><td>Floor Plan - GN_OG 4_Treppenhaus_FBOK Räume</td></tr>
+<tr><td>Floor Plan - GN_OG 4_Treppenhaus_OK FFB</td></tr>
+<tr><td>Floor Plan - GN_OG 5_FBOK Räume</td></tr>
+<tr><td>Floor Plan - GN_OG 5_MEP Unterlage</td></tr>
+<tr><td>Floor Plan - GN_OG 5_OK RFB</td></tr>
+<tr><td>Floor Plan - GN_OG 5_RDOK Nord</td></tr>
+<tr><td>Floor Plan - GN_OG 5_RDOK Süd</td></tr>
+<tr><td>Floor Plan - GN_UG 1_Bodenplatte_OK</td></tr>
+<tr><td>Floor Plan - GN_UG 1_FBOK Räume</td></tr>
+<tr><td>Floor Plan - GN_UG 1_MEP Unterlage</td></tr>
+<tr><td>Floor Plan - GN_UG 1_Treppenhaus_Bodenplatte_OK</td></tr>
+<tr><td>Floor Plan - GN_UG 1_Treppenhaus_OK FFB</td></tr>
+<tr><td>Floor Plan - HG_Bestand_EG_FBOK</td></tr>
+<tr><td>Floor Plan - HG_Bestand_EG_RDOK</td></tr>
+<tr><td>Floor Plan - HG_Bestand_OG 1_FBOK</td></tr>
+<tr><td>Floor Plan - HG_Bestand_OG 1_RDOK</td></tr>
+<tr><td>Floor Plan - HG_Bestand_UG 1_FBOK</td></tr>
+<tr><td>Floor Plan - HG_Bestand_UG 1_FUNDAMENTPLATTE_OK</td></tr>
+<tr><td>Floor Plan - HG_Bestand_UG 1_RDOK</td></tr>
+<tr><td>Floor Plan - HG_EG Körper</td></tr>
+<tr><td>Floor Plan - HG_EG_FBOK Räume</td></tr>
+<tr><td>Floor Plan - HG_EG_OK FFB</td></tr>
+<tr><td>Floor Plan - HG_EG_OK RFB</td></tr>
+<tr><td>Floor Plan - HG_OG 1_FBOK Räume</td></tr>
+<tr><td>Floor Plan - HG_OG 1_OK FFB</td></tr>
+<tr><td>Floor Plan - HG_Technik_Bodenplatte OK</td></tr>
+<tr><td>Floor Plan - HG_Technik_UG Körper</td></tr>
+<tr><td>Floor Plan - HG_UG 1_Bodenplatte_UK</td></tr>
+<tr><td>Floor Plan - HG_UG 1_FBOK Räume</td></tr>
+<tr><td>Floor Plan - HG_UG 1_FUNDAMENTPLATTE_OK</td></tr>
+<tr><td>Floor Plan - HG_UG 1_Lift_ Schachtgrube OK</td></tr>
+<tr><td>Floor Plan - HG_UG 1_OK FFB</td></tr>
+<tr><td>Floor Plan - LAGEPLAN</td></tr>
+<tr><td>Floor Plan - OG 1</td></tr>
+<tr><td>Floor Plan - OG 1_Vorentwurf</td></tr>
+<tr><td>Floor Plan - OG 2</td></tr>
+<tr><td>Floor Plan - OG 2_Vorentwurf</td></tr>
+<tr><td>Floor Plan - OG 3</td></tr>
+<tr><td>Floor Plan - OG 3_Vorentwurf</td></tr>
+<tr><td>Floor Plan - OG 4</td></tr>
+<tr><td>Floor Plan - OG 4_Vorentwurf</td></tr>
+<tr><td>Floor Plan - OG 5</td></tr>
+<tr><td>Floor Plan - OG 5_Vorentwurf</td></tr>
+<tr><td>Floor Plan - TG_Garage_Bodenplatte_OK</td></tr>
+<tr><td>Floor Plan - TG_Garage_EG Körper</td></tr>
+<tr><td>Floor Plan - TG_Garage_EG OK FFB</td></tr>
+<tr><td>Floor Plan - TG_Garage_EG_OK RFB</td></tr>
+<tr><td>Floor Plan - TG_Garage_UG Körper</td></tr>
+<tr><td>Floor Plan - TG_Garage_UG_FBOK Räume</td></tr>
+<tr><td>Floor Plan - TG_Garage_UG_OK FFB</td></tr>
+<tr><td>Floor Plan - UG 1</td></tr>
+<tr><td>Floor Plan - UG 1_Garage_Vorentwurf</td></tr>
+<tr><td>Floor Plan - UG 1_Vorentwurf</td></tr>
+<tr><td>Section - A-A</td></tr>
+<tr><td>Section - Balkon Hofseite Links</td></tr>
+<tr><td>Section - Balkon Hofseite Rechts</td></tr>
+<tr><td>Section - B-B</td></tr>
+<tr><td>Section - EBENEN Gebäudegeschoss</td></tr>
+<tr><td>Section - EBENEN IM PROJEKT</td></tr>
+<tr><td>Section - Fassade OG 5</td></tr>
+<tr><td>Section - Fassade_01</td></tr>
+<tr><td>Section - Garagenzugang</td></tr>
+<tr><td>Section - GN_Fenster Kniestock</td></tr>
+<tr><td>Section - GN_Fenster Kniestock 2</td></tr>
+<tr><td>Section - Grundriss Buehne</td></tr>
+<tr><td>Section - Grundriss Lift - abhängig 1</td></tr>
+<tr><td>Section - HG-1</td></tr>
+<tr><td>Section - HG-2</td></tr>
+<tr><td>Section - Logo Ansicht</td></tr>
+<tr><td>Section - Logo Schnitt</td></tr>
+<tr><td>Section - Nordseite</td></tr>
+<tr><td>Section - Querschnitt Golden Nugget1</td></tr>
+<tr><td>Section - Rampe</td></tr>
+<tr><td>Section - Raster 1_Lotrecht</td></tr>
+<tr><td>Section - Raster 1_Lotrecht1</td></tr>
+<tr><td>Section - Raster 1_Lotrecht2</td></tr>
+<tr><td>Section - Schnitt 2</td></tr>
+<tr><td>Section - Schnitt 3</td></tr>
+<tr><td>Section - TH 1</td></tr>
+<tr><td>Section - TH 2</td></tr>
+<tr><td>Section - TH_Lift 1</td></tr>
+<tr><td>Section - TH_Lift 2</td></tr>
+<tr><td>Section - TW_Buehne_1</td></tr>
+<tr><td>Section - TW_Buehne_2</td></tr>
+<tr><td>Section - TW_D_1 - abhängig 1</td></tr>
+<tr><td>Section - TW_D_2 - abhängig 1</td></tr>
+<tr><td>Section - TW_S_1 Kopie 1</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">4.3 Number of Sheets</div>
+        <div class="portalStandardText" style="text-align: left">Total number of Sheets in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 19</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">4.4 Line Styles</div>
+        <div class="portalStandardText" style="text-align: left">Lists all Line Styles in a Revit model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 45</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td><Area Boundary></td></tr>
+<tr><td><Beyond></td></tr>
+<tr><td><Centerline></td></tr>
+<tr><td><Demolished></td></tr>
+<tr><td><Fabric Envelope></td></tr>
+<tr><td><Fabric Sheets></td></tr>
+<tr><td><Hidden></td></tr>
+<tr><td><Overhead></td></tr>
+<tr><td><Room Separation></td></tr>
+<tr><td><Sketch></td></tr>
+<tr><td><Space Separation></td></tr>
+<tr><td>04_weiss</td></tr>
+<tr><td>2_Ausgezogen</td></tr>
+<tr><td>2_Gedacht</td></tr>
+<tr><td>2_Rot</td></tr>
+<tr><td>2_Verdeckt</td></tr>
+<tr><td>3_Ausgezogen</td></tr>
+<tr><td>3_Gedacht</td></tr>
+<tr><td>3_Verdeckt</td></tr>
+<tr><td>4_Ausgezogen</td></tr>
+<tr><td>4_Gedacht</td></tr>
+<tr><td>4_Verdeckt</td></tr>
+<tr><td>Abdichtung, Neopren, Fugenband</td></tr>
+<tr><td>Achse Bemassung</td></tr>
+<tr><td>AnalysisEdgeCustom</td></tr>
+<tr><td>AnalysisEdgeFree</td></tr>
+<tr><td>AnalysisEdgeHinged</td></tr>
+<tr><td>AnalysisEdgeRigid</td></tr>
+<tr><td>Axis of Rotation</td></tr>
+<tr><td>Faltmarke</td></tr>
+<tr><td>Fassade Gold</td></tr>
+<tr><td>Gelände nach Bauführung</td></tr>
+<tr><td>Gelände vor Bauführung</td></tr>
+<tr><td>Grundgrenze</td></tr>
+<tr><td>Hidden Lines</td></tr>
+<tr><td>Hilfslinie Bemassung</td></tr>
+<tr><td>HSB_Schnittlinien</td></tr>
+<tr><td>Insulation Batting Lines</td></tr>
+<tr><td>Lines</td></tr>
+<tr><td>Medium Lines</td></tr>
+<tr><td>SOF_LoadDivisor</td></tr>
+<tr><td>Thin Lines</td></tr>
+<tr><td>Verdeckt oberhalb</td></tr>
+<tr><td>Verdeckt unterhalb</td></tr>
+<tr><td>Wide Lines</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">4.5 Non built-in Object Styles</div>
+        <div class="portalStandardText" style="text-align: left">Lists all non built-in categories and sub-categories in a Revit model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 2</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>  0</td></tr>
+<tr><td>Imports in Families</td></tr>
+</table>
+</div>
+        
+    </div>
+</div>
+</div><div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">5 - Governance</div>
+        <div class="structureBreakdown">4 Checks, 1 <Span style="color: #87BC40">(100%)</Span> Pass, 0 Fail, 3 Count/List</div>
+    </div>
+    <div class="portalStandardText"></div>
+    <div class="checkResult">
+    <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">5.1 Purge Unused</div>
+        <div class="portalStandardText" style="text-align: left">Reports the number of elements that can be purged from a Revit model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 506</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">5.2 Errors and Warnings</div>
+        <div class="portalStandardText" style="text-align: left">Reports all warnings in a Revit model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 180</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>A wall and a room separation line overlap. One of them may be ignored when Revit finds room boundaries. Shorten or delete the room separation line to remove the overlap.</td></tr>
+<tr><td>A wall and a room separation line overlap. One of them may be ignored when Revit finds room boundaries. Shorten or delete the room separation line to remove the overlap.</td></tr>
+<tr><td>A wall and a room separation line overlap. One of them may be ignored when Revit finds room boundaries. Shorten or delete the room separation line to remove the overlap.</td></tr>
+<tr><td>A wall and a room separation line overlap. One of them may be ignored when Revit finds room boundaries. Shorten or delete the room separation line to remove the overlap.</td></tr>
+<tr><td>A wall and a room separation line overlap. One of them may be ignored when Revit finds room boundaries. Shorten or delete the room separation line to remove the overlap.</td></tr>
+<tr><td>A wall and a room separation line overlap. One of them may be ignored when Revit finds room boundaries. Shorten or delete the room separation line to remove the overlap.</td></tr>
+<tr><td>A wall and a room separation line overlap. One of them may be ignored when Revit finds room boundaries. Shorten or delete the room separation line to remove the overlap.</td></tr>
+<tr><td>A wall and a room separation line overlap. One of them may be ignored when Revit finds room boundaries. Shorten or delete the room separation line to remove the overlap.</td></tr>
+<tr><td>A wall and a room separation line overlap. One of them may be ignored when Revit finds room boundaries. Shorten or delete the room separation line to remove the overlap.</td></tr>
+<tr><td>A wall and a room separation line overlap. One of them may be ignored when Revit finds room boundaries. Shorten or delete the room separation line to remove the overlap.</td></tr>
+<tr><td>A wall and a room separation line overlap. One of them may be ignored when Revit finds room boundaries. Shorten or delete the room separation line to remove the overlap.</td></tr>
+<tr><td>Abwasser 1: It is not possible to calculate the flow since the flow direction mismatch. Please check flow direction on all equipment in this system.</td></tr>
+<tr><td>Analytical Top Projection Plane is partially or completely below Analytical Bottom Projection Plane.  Please reset top and/or bottom planes to valid values.</td></tr>
+<tr><td>Beam or Brace is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Elements do not intersect.</td></tr>
+<tr><td>Elements do not intersect.</td></tr>
+<tr><td>Elements have duplicate "Mark" values.</td></tr>
+<tr><td>Elements have duplicate "Mark" values.</td></tr>
+<tr><td>Elements have duplicate "Mark" values.</td></tr>
+<tr><td>Elements have duplicate "Mark" values.</td></tr>
+<tr><td>Elements have duplicate "Mark" values.</td></tr>
+<tr><td>Elements have duplicate "Mark" values.</td></tr>
+<tr><td>Elements have duplicate "Mark" values.</td></tr>
+<tr><td>Elements have duplicate "Mark" values.</td></tr>
+<tr><td>Elements have duplicate "Mark" values.</td></tr>
+<tr><td>Elements have duplicate "Mark" values.</td></tr>
+<tr><td>Elements have duplicate "Mark" values.</td></tr>
+<tr><td>Elements have duplicate "Mark" values.</td></tr>
+<tr><td>Elements have duplicate "Mark" values.</td></tr>
+<tr><td>Elements have duplicate "Mark" values.</td></tr>
+<tr><td>Elements have duplicate "Mark" values.</td></tr>
+<tr><td>Elements have duplicate "Mark" values.</td></tr>
+<tr><td>Elements have duplicate "Mark" values.</td></tr>
+<tr><td>Elements have duplicate "Mark" values.</td></tr>
+<tr><td>Elements have duplicate "Mark" values.</td></tr>
+<tr><td>Elements have duplicate "Mark" values.</td></tr>
+<tr><td>Elements have duplicate "Mark" values.</td></tr>
+<tr><td>Elements have duplicate "Mark" values.</td></tr>
+<tr><td>Elements have duplicate "Mark" values.</td></tr>
+<tr><td>Elements have duplicate "Mark" values.</td></tr>
+<tr><td>Elements have duplicate "Mark" values.</td></tr>
+<tr><td>Elements have duplicate "Mark" values.</td></tr>
+<tr><td>Elements have duplicate "Mark" values.</td></tr>
+<tr><td>Heizung Vorlauf 1: It is not possible to calculate the flow since the flow direction mismatch. Please check flow direction on all equipment in this system.</td></tr>
+<tr><td>Heizung Vorlauf 5: It is not possible to calculate the flow since the flow direction mismatch. Please check flow direction on all equipment in this system.</td></tr>
+<tr><td>Heizung Vorlauf 6: It is not possible to calculate the flow since the flow direction mismatch. Please check flow direction on all equipment in this system.</td></tr>
+<tr><td>Highlighted elements are joined but do not intersect.</td></tr>
+<tr><td>Highlighted elements are joined but do not intersect.</td></tr>
+<tr><td>Highlighted elements are joined but do not intersect.</td></tr>
+<tr><td>Highlighted floors overlap.</td></tr>
+<tr><td>Highlighted floors overlap.</td></tr>
+<tr><td>Highlighted floors overlap.</td></tr>
+<tr><td>Highlighted floors overlap.</td></tr>
+<tr><td>Highlighted floors overlap.</td></tr>
+<tr><td>Highlighted floors overlap.</td></tr>
+<tr><td>Highlighted floors overlap.</td></tr>
+<tr><td>Highlighted floors overlap.</td></tr>
+<tr><td>Highlighted floors overlap.</td></tr>
+<tr><td>Highlighted floors overlap.</td></tr>
+<tr><td>Highlighted floors overlap.</td></tr>
+<tr><td>Highlighted floors overlap.</td></tr>
+<tr><td>Highlighted floors overlap.</td></tr>
+<tr><td>Highlighted floors overlap.</td></tr>
+<tr><td>Highlighted floors overlap.</td></tr>
+<tr><td>Highlighted floors overlap.</td></tr>
+<tr><td>Highlighted floors overlap.</td></tr>
+<tr><td>Highlighted floors overlap.</td></tr>
+<tr><td>Highlighted floors overlap.</td></tr>
+<tr><td>Highlighted floors overlap.</td></tr>
+<tr><td>Highlighted walls are attached to, but miss, the highlighted targets.</td></tr>
+<tr><td>Highlighted walls overlap. One of them may be ignored when Revit finds room boundaries. Use Cut Geometry to embed one wall within the other.</td></tr>
+<tr><td>Highlighted walls overlap. One of them may be ignored when Revit finds room boundaries. Use Cut Geometry to embed one wall within the other.</td></tr>
+<tr><td>Highlighted walls overlap. One of them may be ignored when Revit finds room boundaries. Use Cut Geometry to embed one wall within the other.</td></tr>
+<tr><td>Insert conflicts with joined Wall.</td></tr>
+<tr><td>Insert conflicts with joined Wall.</td></tr>
+<tr><td>Insert conflicts with joined Wall.</td></tr>
+<tr><td>Insert conflicts with joined Wall.</td></tr>
+<tr><td>Insert conflicts with joined Wall.</td></tr>
+<tr><td>Insert conflicts with joined Wall.</td></tr>
+<tr><td>Insert conflicts with joined Wall.</td></tr>
+<tr><td>Insert conflicts with joined Wall.</td></tr>
+<tr><td>Insert conflicts with joined Wall.</td></tr>
+<tr><td>Insert conflicts with joined Wall.</td></tr>
+<tr><td>Landing depth is less than run width.</td></tr>
+<tr><td>Landing depth is less than run width.</td></tr>
+<tr><td>Line in Massing Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Massing Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Massing Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Massing Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Massing Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Massing Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Massing Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Massing Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Massing Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Massing Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Massing Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Massing Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line in Sketch is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Line is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Opening partially cuts its host.</td></tr>
+<tr><td>Opening partially cuts its host.</td></tr>
+<tr><td>Opening partially cuts its host.</td></tr>
+<tr><td>Opening partially cuts its host.</td></tr>
+<tr><td>Opening partially cuts its host.</td></tr>
+<tr><td>Opening partially cuts its host.</td></tr>
+<tr><td>Opening partially cuts its host.</td></tr>
+<tr><td>Opening partially cuts its host.</td></tr>
+<tr><td>Opening partially cuts its host.</td></tr>
+<tr><td>Opening partially cuts its host.</td></tr>
+<tr><td>Opening partially cuts its host.</td></tr>
+<tr><td>Opening partially cuts its host.</td></tr>
+<tr><td>Opening partially cuts its host.</td></tr>
+<tr><td>Ref Plane is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Ref Plane is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Room Tag is outside of its Room.  Enable Leader or move Room Tag within its Room.</td></tr>
+<tr><td>Room volumes overlap. Adjust the Upper Limit and Limit Offset properties of the Rooms.</td></tr>
+<tr><td>Stair top end exceeds or cannot reach the top elevation of the stair. Add/remove risers at the top end by control or change the stair run's "Relative Top Height" parameter in the properties palette.</td></tr>
+<tr><td>The Actual Run Width of one or more runs is less than the Minimum Run Width specified in the stair type.</td></tr>
+<tr><td>The Actual Run Width of one or more runs is less than the Minimum Run Width specified in the stair type.</td></tr>
+<tr><td>The Actual Tread Depth of stair is less than the Minimum Tread Depth specified in the stair type.</td></tr>
+<tr><td>The Actual Tread Depth of stair is less than the Minimum Tread Depth specified in the stair type.</td></tr>
+<tr><td>There are identical instances in the same place. This will result in double counting in schedules.</td></tr>
+<tr><td>Thickness of this Floor may be slightly inaccurate due to extreme Shape Editing. Dimensions to this element in sections and details may not accurately indicate the Thickness shown in Type Properties.</td></tr>
+<tr><td>Thickness of this Floor may be slightly inaccurate due to extreme Shape Editing. Dimensions to this element in sections and details may not accurately indicate the Thickness shown in Type Properties.</td></tr>
+<tr><td>Thickness of this Roof may be slightly inaccurate due to extreme Shape Editing. Dimensions to this element in sections and details may not accurately indicate the Thickness shown in Type Properties.</td></tr>
+<tr><td>Thickness of this Roof may be slightly inaccurate due to extreme Shape Editing. Dimensions to this element in sections and details may not accurately indicate the Thickness shown in Type Properties.</td></tr>
+<tr><td>Two elements were not automatically joined because one or both is not editable.</td></tr>
+<tr><td>Wall and instance have different phasing settings. Automatic creation of the infilling wall fails.</td></tr>
+<tr><td>Wall is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Wall is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Wall is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Wall is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Wall is slightly off axis and may cause inaccuracies.</td></tr>
+<tr><td>Wall is slightly off axis and may cause inaccuracies.</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_Report_Pass_26.png" alt="PASS" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">5.3 Groups (Element Check)</div>
+        <div class="portalStandardText" style="text-align: left">Checks for any groups in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="http://www.biminteroperabilitytools.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">5.4 Worksets</div>
+        <div class="portalStandardText" style="text-align: left">Lists all user worksets for a Revit model or reports '*Not Workshared*' if worksharing is not enabled.  Also optionally lists the number of instances in each workset.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 11,448</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Count</th><th>Name</th></tr>
+<tr><td>11294</td><td>Bearbeitungsbereich1</td></tr>
+<tr><td>154</td><td>Gemeinsam genutzte Ansichten, Ebenen und Raster</td></tr>
+</table>
+</div>
+        
+    </div>
+</div>
+</div>
+</div>
+    </div>
+</div>
+</body>
+</html>
